@@ -1,0 +1,10 @@
+<%= simple_form_for @account, url: account_path do |f| %>
+  <%= f.simple_fields_for :users do |user_form| %>
+    <%= user_form.input :name %>
+    <%= f.input :name, label: "Company" %>
+    <%= user_form.input :email %>
+    <%= user_form.input :password %>
+    <%= user_form.input :admin, as: :hidden, input_html: { value: true } %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

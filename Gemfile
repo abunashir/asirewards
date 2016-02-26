@@ -18,6 +18,7 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
 gem "uglifier"
+gem "clearance"
 
 group :development do
   gem "quiet_assets"
@@ -51,4 +52,5 @@ end
 
 group :staging, :production do
   gem "rack-timeout"
+  gem "rails_12factor"
 end

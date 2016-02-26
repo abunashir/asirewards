@@ -17,3 +17,7 @@ en:
 
   titles:
     application: Impactrewards
+
+  account:
+    create:
+      success: "Congratulations, your account has been created successfully."
