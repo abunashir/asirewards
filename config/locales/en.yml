@@ -21,3 +21,9 @@ en:
   account:
     create:
       success: "Congratulations, your account has been created successfully."
+
+  cert:
+    create:
+      success:
+        "New certificated has been added and one of the admin will
+        approve it soon"

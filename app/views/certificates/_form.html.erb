@@ -1,0 +1,10 @@
+<%= simple_form_for @certificate do |f| %>
+  <%= f.input :banner, as: :file %>
+  <%= f.input :title %>
+  <%= f.input :sub_title %>
+  <%= f.input :terms %>
+  <%= f.input :expires_on, as: :string %>
+  <%= f.input :price %>
+  <%= f.input :policies %>
+  <%= f.submit %>
+<% end %>

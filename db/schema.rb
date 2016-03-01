@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226162316) do
+ActiveRecord::Schema.define(version: 20160229123858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "certificates", force: :cascade do |t|
+    t.string   "banner"
+    t.text     "title"
+    t.text     "sub_title"
+    t.text     "terms"
+    t.date     "expires_on"
+    t.decimal  "price"
+    t.text     "policies"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.date     "approved_on"
+  end
+
+  add_index "certificates", ["user_id"], name: "index_certificates_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -54,5 +70,6 @@ ActiveRecord::Schema.define(version: 20160226162316) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
+  add_foreign_key "certificates", "users"
   add_foreign_key "users", "companies"
 end

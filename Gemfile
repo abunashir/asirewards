@@ -19,6 +19,8 @@ gem "simple_form"
 gem "title"
 gem "uglifier"
 gem "clearance"
+gem "carrierwave"
+gem "fog"
 
 group :development do
   gem "quiet_assets"

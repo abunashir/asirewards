@@ -1,6 +1,8 @@
 <% if signed_in? %>
   You are logged in as, <%= current_user.email %>,
   <%= link_to "Logout", sign_out_path, method: :delete %>
+
+  <%= link_to "New Certificate", new_certificate_path %>
 <% else %>
     You are not logged in, please
     <%= link_to "Create new account", new_account_path %>

@@ -1,0 +1,8 @@
+<ul>
+  <%= @certificates.each do |certificate| %>
+    <li>
+      <%= certificate.title %>
+      <%= certificate.status %>
+    </li>
+  <% end %>
+</ul>
