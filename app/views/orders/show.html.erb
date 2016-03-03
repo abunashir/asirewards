@@ -1,0 +1,8 @@
+<div class="order">
+  <h2><%= @order.certificate.title %></h2>
+  <p><%= @order.note %></p>
+  <p>Quantity: <%= @order.quantity %></p>
+  <p>Requested by: <%= @order.user.name %></p>
+
+  <%= link_to "Approve", order_path(@order), method: :put %>
+</div>

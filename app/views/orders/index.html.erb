@@ -4,6 +4,7 @@
     <th>Quantity</th>
     <th>Note</th>
     <th>Status</th>
+    <th>Actions</th>
   </tr>
 
   <% @orders.each do |order| %>
@@ -12,6 +13,11 @@
       <td><%= order.quantity %></td>
       <td><%= order.note %></td>
       <td><%= order.status %></td>
+      <td>
+        <% if current_user.admin? %>
+          <%= link_to "details", order_path(order) %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

@@ -8,4 +8,15 @@ class Order < ActiveRecord::Base
   def status
     approved_on.present? ? "Approved" : "Pending"
   end
+
+  def approve
+    transaction do
+      certificate.create_kit(number: quantity)
+      touch :approved_on
+    end
+  end
+
+  def self.pending
+    where(approved_on: nil)
+  end
 end

@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
   before_action :require_login
 
   def index
-    @orders = current_user.orders
+    @orders = order_scope
+  end
+
+  def show
+    @order = order_scope.find(params[:id])
   end
 
   def new
@@ -19,7 +23,25 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    order = order_scope.find(params[:id])
+
+    if order.approve
+      redirect_to orders_path
+    else
+      redirect_to order_path(order)
+    end
+  end
+
   private
+
+  def order_scope
+    if current_user.admin?
+      Order.pending
+    else
+      current_user.orders
+    end
+  end
 
   def order_params
     params.require(:order).permit(:certificate_id, :quantity, :note)
