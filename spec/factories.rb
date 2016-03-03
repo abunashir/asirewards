@@ -1,5 +1,15 @@
 FactoryGirl.define do
+  factory :order do
+    association :certificate
+    association :user
+
+    quantity 3
+    note "Special note"
+  end
+
   factory :certificate do
+    association :user
+
     banner "Banner Image"
     title "Reward Certificate"
     sub_title "Enjoy unlimited benifits from us"

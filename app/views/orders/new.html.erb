@@ -1,0 +1,6 @@
+<%= simple_form_for @order do |f| %>
+  <%= f.input :certificate_id, collection: current_user.certificates  %>
+  <%= f.input :quantity %>
+  <%= f.input :note %>
+  <%= f.submit %>
+<% end %>

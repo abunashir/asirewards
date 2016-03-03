@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Certificate title</th>
+    <th>Quantity</th>
+    <th>Note</th>
+    <th>Status</th>
+  </tr>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.certificate.title %></td>
+      <td><%= order.quantity %></td>
+      <td><%= order.note %></td>
+      <td><%= order.status %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Add new order", new_order_path %>
