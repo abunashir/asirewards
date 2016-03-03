@@ -2,6 +2,10 @@
   You are logged in as, <%= current_user.email %>,
   <%= link_to "Logout", sign_out_path, method: :delete %>
 
+  <ul>
+    <li><%= link_to "Certificates", certificates_path %></li>
+  </ul>
+
   <%= link_to "New Certificate", new_certificate_path %>
 <% else %>
     You are not logged in, please

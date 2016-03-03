@@ -1,8 +1,19 @@
-<ul>
-  <%= @certificates.each do |certificate| %>
-    <li>
-      <%= certificate.title %>
-      <%= certificate.status %>
-    </li>
+<table class="certificates">
+  <tr>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Actiion</th>
+  </tr>
+
+  <% @certificates.each do |certificate| %>
+    <tr>
+      <td><%= certificate.title %></td>
+      <td><%= certificate.status %></td>
+
+      <td>
+        <%= link_to "Preview", certificate_preview_path(certificate) %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
+
