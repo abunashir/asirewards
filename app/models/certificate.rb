@@ -2,6 +2,9 @@ class Certificate < ActiveRecord::Base
   belongs_to :user
   has_many :kits
 
+  delegate :available_kit, to: :kits
+  delegate :available?, to: :kits
+
   mount_uploader :banner, BannerUploader
 
   def status

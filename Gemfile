@@ -21,6 +21,8 @@ gem "uglifier"
 gem "clearance"
 gem "carrierwave"
 gem "fog"
+gem "pdfkit"
+gem "render_anywhere", require: false
 
 group :development do
   gem "quiet_assets"
@@ -39,6 +41,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.4.0"
+  gem "wkhtmltopdf-binary"
 end
 
 group :test do
@@ -55,4 +58,5 @@ end
 group :staging, :production do
   gem "rack-timeout"
   gem "rails_12factor"
+  gem "wkhtmltopdf-heroku"
 end

@@ -3,4 +3,8 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :users
 
   validates :name, presence: true
+
+  def staffs
+    users.where(role: "staff")
+  end
 end

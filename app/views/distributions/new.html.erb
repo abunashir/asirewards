@@ -1,0 +1,6 @@
+<%= simple_form_for @distribution do |f| %>
+  <%= f.input :certificate_id, collection: current_user.certificates %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.submit "Send certificate" %>
+<% end %>

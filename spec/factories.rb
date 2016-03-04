@@ -1,8 +1,15 @@
 FactoryGirl.define do
-  factory :kit do
-    code "MyString"
-    certificate nil
+  factory :distribution do
+    association :kit
+    name "John Doe"
+    sequence(:email) { |n| "customer#{n}@example.com" }
   end
+
+  factory :kit do
+    association :certificate
+    code "ABCD12345"
+  end
+
   factory :order do
     association :certificate
     association :user
@@ -30,9 +37,12 @@ FactoryGirl.define do
   end
 
   factory :user do
+    association :company
+
     name "John Doe"
     sequence(:email){ |n| "user#{n}@example.com" }
     password "secret_password"
+    role "staff"
 
     factory :admin do
       admin true

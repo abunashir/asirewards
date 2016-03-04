@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303124244) do
+ActiveRecord::Schema.define(version: 20160304102817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,11 +54,24 @@ ActiveRecord::Schema.define(version: 20160303124244) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "distributions", force: :cascade do |t|
+    t.integer  "kit_id"
+    t.string   "email"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "name"
+    t.integer  "sender_id"
+    t.date     "activated_on"
+  end
+
+  add_index "distributions", ["kit_id"], name: "index_distributions_on_kit_id", using: :btree
+
   create_table "kits", force: :cascade do |t|
     t.string   "code"
     t.integer  "certificate_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "used",           default: false, null: false
   end
 
   add_index "kits", ["certificate_id"], name: "index_kits_on_certificate_id", using: :btree
@@ -87,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160303124244) do
     t.string   "remember_token",     limit: 128,                 null: false
     t.boolean  "admin",                          default: false
     t.integer  "company_id"
+    t.string   "role"
   end
 
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
@@ -94,6 +108,7 @@ ActiveRecord::Schema.define(version: 20160303124244) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "certificates", "users"
+  add_foreign_key "distributions", "kits"
   add_foreign_key "kits", "certificates"
   add_foreign_key "orders", "certificates"
   add_foreign_key "orders", "users"

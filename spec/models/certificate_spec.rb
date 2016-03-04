@@ -17,4 +17,14 @@ RSpec.describe Certificate, type: :model do
       expect(certificate.kits.count).to eq(10)
     end
   end
+
+  describe "#available_kit" do
+    it "returns the random available kit" do
+      certificate = create(:certificate)
+      certificate.create_kit(number: 2)
+      certificate.kits.first.mark_used!
+
+      expect(certificate.available_kit).to eq(certificate.kits.last)
+    end
+  end
 end
