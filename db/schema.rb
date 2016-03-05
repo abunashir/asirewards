@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304102817) do
+ActiveRecord::Schema.define(version: 20160305125223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,10 +72,13 @@ ActiveRecord::Schema.define(version: 20160304102817) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.boolean  "used",           default: false, null: false
+    t.date     "activated_on"
+    t.integer  "user_id"
   end
 
   add_index "kits", ["certificate_id"], name: "index_kits_on_certificate_id", using: :btree
   add_index "kits", ["code"], name: "index_kits_on_code", using: :btree
+  add_index "kits", ["user_id"], name: "index_kits_on_user_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "certificate_id"
@@ -101,6 +104,7 @@ ActiveRecord::Schema.define(version: 20160304102817) do
     t.boolean  "admin",                          default: false
     t.integer  "company_id"
     t.string   "role"
+    t.string   "phone"
   end
 
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
@@ -110,6 +114,7 @@ ActiveRecord::Schema.define(version: 20160304102817) do
   add_foreign_key "certificates", "users"
   add_foreign_key "distributions", "kits"
   add_foreign_key "kits", "certificates"
+  add_foreign_key "kits", "users"
   add_foreign_key "orders", "certificates"
   add_foreign_key "orders", "users"
   add_foreign_key "users", "companies"

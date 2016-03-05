@@ -1,5 +1,7 @@
 class Kit < ActiveRecord::Base
   belongs_to :certificate
+  belongs_to :user
+  accepts_nested_attributes_for :user
 
   delegate :title, to: :certificate, prefix: true
 

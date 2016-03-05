@@ -7,7 +7,11 @@ FactoryGirl.define do
 
   factory :kit do
     association :certificate
-    code "ABCD12345"
+    code "ABCD123"
+
+    factory :activation, class: Activation do
+      used true
+    end
   end
 
   factory :order do
