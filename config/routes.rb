@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :distributions
+  resources :activations
 end

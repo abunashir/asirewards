@@ -9,6 +9,9 @@ class Distribution < ActiveRecord::Base
   validates :kit, presence: true
 
   delegate :certificate_title, to: :kit
+  delegate :mark_used!, to: :kit
+
+  after_create :mark_used!
 
   def status
     activated_on.present? ? "Activated" : "Pending"
