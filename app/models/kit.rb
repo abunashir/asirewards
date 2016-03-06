@@ -15,6 +15,10 @@ class Kit < ActiveRecord::Base
     update_attributes! used: true
   end
 
+  def self.used
+    where(used: true)
+  end
+
   def self.available?
     available_kit.present?
   end
