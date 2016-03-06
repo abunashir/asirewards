@@ -1,0 +1,9 @@
+<%= simple_form_for @kit, url: certificate_kits_path(@certificate) do |f| %>
+  <%= f.simple_fields_for :user do |user_form| %>
+    <%= user_form.input :name %>
+    <%= user_form.input :email %>
+    <%= user_form.input :phone %>
+  <% end %>
+
+  <%= f.submit "Send certificate" %>
+<% end %>

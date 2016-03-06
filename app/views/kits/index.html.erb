@@ -1,0 +1,23 @@
+<p>
+<%= @certificate.title %>'s kits
+</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <% @kits.each do |kit| %>
+    <tr>
+      <td><%= kit.user.name %></td>
+      <td><%= kit.user.email %></td>
+      <td><%= kit.status %></td>
+      <td>Download</td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Send certificate", new_certificate_kit_path(@certificate) %>

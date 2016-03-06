@@ -11,6 +11,7 @@
       <td><%= certificate.status %></td>
 
       <td>
+        <%= link_to "Kits", certificate_kits_path(certificate) %>
         <%= link_to "Preview", certificate_preview_path(certificate) %>
       </td>
     </tr>
