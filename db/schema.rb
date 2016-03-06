@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20160305125223) do
     t.datetime "updated_at",                                     null: false
     t.string   "name"
     t.string   "email",                                          null: false
-    t.string   "encrypted_password", limit: 128,                 null: false
+    t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128,                 null: false
     t.boolean  "admin",                          default: false

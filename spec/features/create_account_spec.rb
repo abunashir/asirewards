@@ -25,6 +25,5 @@ feature "Account creation" do
     expect(page).to have_content("Namecan't be blank")
     expect(page).to have_content("Companycan't be blank")
     expect(page).to have_content("Emailis invalid")
-    expect(page).to have_content("Passwordcan't be blank")
   end
 end

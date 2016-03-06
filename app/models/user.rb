@@ -9,7 +9,12 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, presence: true
-  validates :password, presence: true, allow_blank: true
 
   delegate :staffs, to: :company, allow_nil: true, prefix: true
+
+  private
+
+  def password_optional?
+    !password.present?
+  end
 end
