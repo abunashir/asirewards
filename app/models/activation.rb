@@ -14,8 +14,10 @@ class Activation < Kit
     where(used: true, activated_on: nil)
   end
 
-  def self.find_by_code(activation_code)
-    kit_code= activation_code.split(//).last(7).join
-    pending.where(code: kit_code).last
+  def self.find_by_code(kit_activation_code)
+    if kit_activation_code
+      kit_code= kit_activation_code.split(//).last(7).join
+      pending.where(code: kit_code).last
+    end
   end
 end

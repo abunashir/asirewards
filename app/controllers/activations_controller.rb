@@ -4,13 +4,10 @@ class ActivationsController < ApplicationController
 
   def show
     if activation
-      session[:activation_code] = params[:id]
-      redirect_to new_activation_path
+      render :edit
+    else
+      redirect_to root_path
     end
-  end
-
-  def new
-    @activation = activation || Activation.new
   end
 
   def update
@@ -24,18 +21,14 @@ class ActivationsController < ApplicationController
         activations_path, notice: "Your certificate has been activated"
       )
     else
-      render :new
+      render :edit
     end
   end
 
   private
 
   def activation
-    Activation.find_by_code(activation_code)
-  end
-
-  def activation_code
-    session[:activation_code] || params[:id]
+    @activation = Activation.find_by_code(params[:id])
   end
 
   def activation_params

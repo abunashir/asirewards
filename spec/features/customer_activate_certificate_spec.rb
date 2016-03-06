@@ -14,7 +14,6 @@ feature "Certificate activation" do
     fill_in "Name", with: "Keith Thomson"
     fill_in "Email", with: customer.email
     fill_in "Phone", with: "012345678910"
-    fill_in "Activation code", with: certificate_kit.code
     click_on "Activate"
 
     expect(page).to have_content("Your certificate has been activated")
