@@ -24,9 +24,10 @@ feature "Order certificate kits" do
   end
 
   def vist_order_new_certificate_kits
-    certificate = create(:certificate)
+    user = create(:user)
+    certificate = create(:certificate, company: user.company)
 
-    visit root_path(as: certificate.user)
+    visit root_path(as: user)
     click_on "Orders"
     click_on "Add new order"
     certificate

@@ -1,10 +1,4 @@
 FactoryGirl.define do
-  factory :distribution do
-    association :kit
-    name "John Doe"
-    sequence(:email) { |n| "customer#{n}@example.com" }
-  end
-
   factory :kit do
     association :certificate
     code "ABCD123"
@@ -23,7 +17,7 @@ FactoryGirl.define do
   end
 
   factory :certificate do
-    association :user
+    association :company
 
     banner "Banner Image"
     title "Reward Certificate"

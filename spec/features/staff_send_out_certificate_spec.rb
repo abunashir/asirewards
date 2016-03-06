@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Send out certificates" do
   scenario "staff sendout available certificate" do
     staff = create(:user, admin: true)
-    certificate = create(:certificate, user: staff)
+    certificate = create(:certificate, company: staff.company)
     certificate.create_kit(number: 1)
     customer = build(:user, role: "staff")
 

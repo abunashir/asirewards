@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306120337) do
+ActiveRecord::Schema.define(version: 20160306141926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20160306120337) do
     t.text     "policies"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
     t.date     "approved_on"
     t.string   "code_prefix"
+    t.integer  "company_id"
   end
 
-  add_index "certificates", ["user_id"], name: "index_certificates_on_user_id", using: :btree
+  add_index "certificates", ["company_id"], name: "index_certificates_on_company_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20160306120337) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
-  add_foreign_key "certificates", "users"
+  add_foreign_key "certificates", "companies"
   add_foreign_key "kits", "certificates"
   add_foreign_key "kits", "users"
   add_foreign_key "orders", "certificates"

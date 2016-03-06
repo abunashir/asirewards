@@ -1,5 +1,5 @@
 class Certificate < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :company
   has_many :kits
 
   delegate :available_kit, to: :kits
