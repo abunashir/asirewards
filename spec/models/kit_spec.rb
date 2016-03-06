@@ -41,4 +41,13 @@ describe Kit do
       expect(kit.used?).to eq(true)
     end
   end
+
+  describe "#send_certificate" do
+    it "mark the kit as used" do
+      pending_kit = create(:kit, used: true)
+
+      expect(pending_kit.send_certificate).to eq(true)
+      expect(pending_kit.reload.used?).to eq(true)
+    end
+  end
 end
