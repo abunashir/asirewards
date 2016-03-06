@@ -15,6 +15,20 @@ class Kit < ActiveRecord::Base
     update_attributes! used: true
   end
 
+  def status
+    if activated?
+      "Activated"
+    elsif used?
+      "Pending"
+    else
+      "Ready"
+    end
+  end
+
+  def activated?
+    used? && activated_on.present?
+  end
+
   def self.used
     where(used: true)
   end

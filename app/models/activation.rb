@@ -6,10 +6,6 @@ class Activation < Kit
     save
   end
 
-  def activated?
-    used? && activated_on.present?
-  end
-
   def deliver_confirmation
     ActivationConfirmation.release(self.id).deliver_later
   end

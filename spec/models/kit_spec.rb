@@ -59,4 +59,16 @@ describe Kit do
       expect(pending_kit.reload.used?).to eq(true)
     end
   end
+
+  describe "#status" do
+    it "returns proper status for each kit" do
+      unused_kit  = create(:kit, used: false)
+      pending_kit = create(:kit, used: true, activated_on: nil)
+      active_kit  = create(:kit, used: true, activated_on: Time.now)
+
+      expect(unused_kit.status).to eq("Ready")
+      expect(pending_kit.status).to eq("Pending")
+      expect(active_kit.status).to eq("Activated")
+    end
+  end
 end
