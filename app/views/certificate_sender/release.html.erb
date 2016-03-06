@@ -1,5 +1,11 @@
 <p>
-Please see your certificate attached, you are one step closer to going on your holiday. To activate the certificate please click on this link, or go to WEBSITE to activate using the code displayed on your certificate.
+Please see your certificate attached, you are one step closer to going on your holiday. To activate the certificate please
+
+<%= link_to(
+  "click on this link", activation_url(@certificate_kit.activation_code)
+)%>
+
+or <%= link_to "go to", root_url %> to activate using the code displayed on your certificate.
 </p>
 
 <p>

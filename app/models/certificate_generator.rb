@@ -3,10 +3,10 @@ require "render_anywhere"
 class CertificateGenerator
   include RenderAnywhere
 
-  attr_reader :certificate
+  attr_reader :certificate_kit
 
-  def initialize(certificate)
-    @certificate = certificate
+  def initialize(certificate_kit)
+    @certificate_kit = certificate_kit
   end
 
   def to_pdf
@@ -15,14 +15,14 @@ class CertificateGenerator
   end
 
   def filename
-    "#{certificate.certificate_title} certificate.pdf"
+    "#{certificate_kit.title}.pdf"
   end
 
   def render_attributes
     {
       template: "certificates/pdf",
       layout: "certificate_pdf",
-      locals: {distribution: certificate}
+      locals: {certificate_kit: certificate_kit}
     }
   end
 

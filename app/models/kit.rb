@@ -3,12 +3,16 @@ class Kit < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :user, reject_if: :all_blank
 
-  delegate :title, to: :certificate, prefix: true
+  delegate :title, :sub_title, :banner, :terms, :policies, to: :certificate
 
   def send_certificate
     if save
       mark_used!
     end
+  end
+
+  def deliver_certificate
+    CertificateSender.release(self.id).deliver_later
   end
 
   def activation_code

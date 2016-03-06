@@ -72,6 +72,22 @@ describe Kit do
     end
   end
 
+  describe "#deliver_certificate" do
+    include ActiveJob::TestHelper
+
+    it "enque the certificate sending job" do
+      certificate = create(:certificate)
+      user = create(:user)
+      kit = create(:kit, certificate: certificate, user: user)
+      kit.deliver_certificate
+
+      expect(enqueued_jobs.size).to eq(1)
+      expect(enqueued_jobs.last[:job]).to eq(ActionMailer::DeliveryJob)
+      expect(enqueued_jobs.last[:args].first).to eq("CertificateSender")
+      expect(enqueued_jobs.last[:args].last).to eq(kit.id)
+    end
+  end
+
   describe "#activation_code" do
     it "format the kit with certificate prefix" do
       certificate = create(:certificate, code_prefix: "BMM12")
