@@ -11,6 +11,10 @@ class Kit < ActiveRecord::Base
     end
   end
 
+  def activation_code
+    [certificate.code_prefix, code].compact.join.upcase
+  end
+
   def mark_used!
     update_attributes! used: true
   end

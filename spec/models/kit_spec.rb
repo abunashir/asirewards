@@ -71,4 +71,13 @@ describe Kit do
       expect(active_kit.status).to eq("Activated")
     end
   end
+
+  describe "#activation_code" do
+    it "format the kit with certificate prefix" do
+      certificate = create(:certificate, code_prefix: "BMM12")
+      kit = create(:kit, certificate: certificate)
+
+      expect(kit.activation_code).to eq("BMM12#{kit.code.upcase}")
+    end
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305125223) do
+ActiveRecord::Schema.define(version: 20160306103601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160305125223) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.date     "approved_on"
+    t.string   "code_prefix"
   end
 
   add_index "certificates", ["user_id"], name: "index_certificates_on_user_id", using: :btree
