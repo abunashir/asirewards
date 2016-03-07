@@ -28,6 +28,7 @@ feature "Order certificate kits" do
     certificate = create(:certificate, company: user.company)
 
     visit root_path(as: user)
+    visit marketer_path
     click_on "Orders"
     click_on "Add new order"
     certificate

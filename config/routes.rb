@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "home#index"
+  root to: "activations#index"
   resource :account
 
   resources :certificates do
@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :activations
+  resource :marketer
 end

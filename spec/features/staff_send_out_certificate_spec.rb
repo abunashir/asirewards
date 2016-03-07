@@ -8,6 +8,8 @@ feature "Send out certificates" do
     customer = build(:user, role: "staff")
 
     visit root_path(as: staff)
+    visit marketer_path
+
     click_on "Certificates"
     click_on "Kits"
     click_on "Send certificate"

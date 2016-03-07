@@ -6,6 +6,8 @@ feature "Certificate previewing" do
     certificate = create(:certificate, company: user.company)
 
     visit root_path(as: user)
+    visit marketer_path
+
     click_on "Certificates"
     click_on "Preview"
 

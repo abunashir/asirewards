@@ -9,7 +9,7 @@ class AccountsController < ApplicationController
 
     if @account.save
       sign_in(@account.admin)
-      redirect_to root_path, notice: I18n.t("account.create.success")
+      redirect_to marketer_path, notice: I18n.t("account.create.success")
     else
       render :new
     end

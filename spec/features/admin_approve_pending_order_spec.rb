@@ -5,6 +5,8 @@ feature "Order approval" do
     order = create(:order)
 
     visit root_path(as: create(:admin))
+    visit marketer_path
+
     click_on "Orders"
     click_on "details"
     click_on "Approve"

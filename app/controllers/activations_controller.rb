@@ -10,6 +10,27 @@ class ActivationsController < ApplicationController
     end
   end
 
+  def create
+    @activation = Activation.find_by_code(params[:activation][:activation_code])
+
+    if @activation
+      activation_attributes = activation_params
+      activation_attributes[:user_attributes][:id] = @activation.user_id
+
+      @activation.attributes = activation_attributes
+
+      if @activation.activate
+        @activation.deliver_confirmation
+
+        redirect_to(
+          activations_path, notice: I18n.t("cert.activation.success")
+        )
+      else
+        render :index
+      end
+    end
+  end
+
   def update
     @activation = Activation.find(params[:id])
     @activation.attributes = activation_params
