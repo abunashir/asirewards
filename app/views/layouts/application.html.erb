@@ -1,21 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
-  <%#
-    Configure default and controller-, and view-specific titles in
-    config/locales/en.yml. For more see:
-    https://github.com/calebthompson/title#usage
-  %>
-  <title><%= title %></title>
-  <%= stylesheet_link_tag :application, media: "all" %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="<%= body_class %>">
-  <%= render "flashes" -%>
-  <%= yield %>
-  <%= render "javascript" %>
-</body>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="asi, rewards, certificate">
+    <meta name="keywords" content="asi, rewards, certificate">
+    <title>ASI Rewards</title>
+    <!--pageMeta-->
+
+    <%= stylesheet_link_tag :asirewards %>
+
+    <!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+      <script src="scripts/respond.min.js"></script>
+    <![endif]-->
+    <!--headerIncludes-->
+  </head>
+
+  <body data-spy="scroll" data-target=".navMenuCollapse">
+    <div id="preloader">
+      <div class="loading-data"></div>
+    </div>
+
+    <div id="wrap">
+      <!-- NAVIGATION LOGIN FULL -->
+      <nav class="navbar bg-color1 dark-bg">
+        <div class="container-fluid">
+
+          <%= link_to root_path, class: "navbar-brand goto" do %>
+            <%= image_tag "asirewards-logo.png", title: "Asi Rewards", height: 25 %>
+          <% end %>
+
+          <button class="round-toggle navbar-toggle menu-collapse-btn collapsed"
+                  data-toggle="collapse" data-target=".navMenuCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse navMenuCollapse">
+            <div class="login-panel">
+              <a class="btn btn-primary" href="#">
+                <i class="icon icon-user"></i>
+                Business Login
+              </a>
+            </div>
+
+            <ul class="nav">
+              <li><a href="#activation">Activation</a></li>
+              <li><a href="#featured">Featured Destinations</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav><!-- INTRO LEFT FORM -->
+
+      <%= yield %>
+
+      <!-- featured destinations -->
+      <%= render "layouts/select/destinations" %>
+
+      <!-- contact form -->
+      <%= render "layouts/select/contact" %>
+
+
+      <section id="goto" class="goto-block text-center bg-color1 dark-bg asirewards-footer">
+        <div class="container editContent">
+          &copy; 2016 ASI Rewards, All Right Reserved.
+        </div>
+      </section>
+
+    </div>
+
+      <!-- JavaScript -->
+      <%= javascript_include_tag :asirewards %>
+  </body>
 </html>
