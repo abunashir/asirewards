@@ -2,22 +2,49 @@ require "rails_helper"
 
 feature "Send out certificates" do
   scenario "staff sendout available certificate" do
+    staff, customer, certificate = staff_customer_and_certificate
+
+    visit_sending_certificate_page(as: staff)
+    submit_certificate_sending_form(customer)
+
+    expect_certificate_kit_page_to_have(customer, certificate)
+  end
+
+  scenario "staff send out certificate to existing customer" do
+    staff, customer, certificate = staff_customer_and_certificate
+    customer.save
+
+    visit_sending_certificate_page(as: staff)
+    submit_certificate_sending_form(customer)
+
+    expect_certificate_kit_page_to_have(customer, certificate)
+  end
+
+  def staff_customer_and_certificate
     staff = create(:user, admin: true)
     certificate = create(:certificate, company: staff.company)
     certificate.create_kit(number: 1)
     customer = build(:user, role: "staff")
 
-    visit root_path(as: staff)
+    [staff, customer, certificate]
+  end
+
+  def visit_sending_certificate_page(as:)
+    visit root_path(as: as)
     visit marketer_path
 
     click_on "Certificates"
     click_on "Kits"
     click_on "Send certificate"
+  end
 
+  def submit_certificate_sending_form(customer)
     fill_in "Name", with: customer.name
     fill_in "Email", with: customer.email
     click_on "Send certificate"
+  end
 
+  def expect_certificate_kit_page_to_have(customer, certificate)
     expect(page).to have_content(certificate.title)
     expect(page).to have_content(customer.name)
     expect(page).to have_content(customer.email)

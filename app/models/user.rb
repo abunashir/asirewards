@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   include Clearance::User
   belongs_to :company
-  has_one :kit
 
+  has_many :kits
   has_many :orders
 
   validates :name, presence: true

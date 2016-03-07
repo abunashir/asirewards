@@ -12,20 +12,43 @@ class KitsController < ApplicationController
 
   def create
     @kit = certificate.available_kit
-    @kit.attributes = kit_params
-
-    if @kit.send_certificate
-      @kit.deliver_certificate
-      redirect_to certificate_kits_path(certificate)
-    else
-      render :new
-    end
+    save_certificate_kit || render_errors(:new)
   end
 
   private
 
   def certificate
     @certificate ||= Certificate.find(params[:certificate_id])
+  end
+
+  def save_certificate_kit
+    set_certificate_kit_attributes
+
+    if @kit.send_certificate
+      @kit.deliver_certificate
+
+      redirect_to(
+        certificate_kits_path(certificate), notice: I18n.t("kit.create.success")
+      )
+    end
+  end
+
+  def render_errors(view_partial)
+    flash.now[:error] = I18n.t("kit.create.errors")
+    render view_partial
+  end
+
+  def existing_user
+    @user ||= User.find_by_email(kit_params[:user_attributes][:email])
+  end
+
+  def set_certificate_kit_attributes
+    if existing_user
+      flash.now[:success] = I18n.t("kit.create.existing_user")
+      @kit.user = existing_user
+    else
+      @kit.attributes = kit_params
+    end
   end
 
   def kit_params

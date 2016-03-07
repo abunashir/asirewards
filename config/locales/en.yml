@@ -33,3 +33,12 @@ en:
         "Your certificate has been activated"
       errors:
         "Please check activation details, something is not right"
+
+  kit:
+    create:
+      existing_user:
+        "This email has already received a certificate from the system, we will
+        use the existing name when sending this certificate, as it has already
+        been entered by the client."
+      success: ""
+      errors: ""
