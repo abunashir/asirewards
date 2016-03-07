@@ -1,5 +1,7 @@
 class ActivationsController < ApplicationController
   def index
+    @activation = Activation.new
+    @activation.build_user
   end
 
   def show
@@ -11,45 +13,53 @@ class ActivationsController < ApplicationController
   end
 
   def create
-    @activation = Activation.find_by_code(params[:activation][:activation_code])
-
-    if @activation
-      activation_attributes = activation_params
-      activation_attributes[:user_attributes][:id] = @activation.user_id
-
-      @activation.attributes = activation_attributes
-
-      if @activation.activate
-        @activation.deliver_confirmation
-
-        redirect_to(
-          activations_path, notice: I18n.t("cert.activation.success")
-        )
-      else
-        render :index
-      end
+    if activation
+      save_activation || render_errors(:index)
+    else
+      redirect_to root_path, notice: I18n.t("cert.activation.errors")
     end
   end
 
   def update
     @activation = Activation.find(params[:id])
-    @activation.attributes = activation_params
-
-    if @activation.activate
-      @activation.deliver_confirmation
-
-      redirect_to(
-        activations_path, notice: "Your certificate has been activated"
-      )
-    else
-      render :edit
-    end
+    save_activation || render_errors(:edit)
   end
 
   private
 
   def activation
-    @activation = Activation.find_by_code(params[:id])
+    @activation = Activation.find_by_code(activation_code)
+  end
+
+  def activation_code
+    params[:id] || params[:activation][:activation_code]
+  end
+
+  def save_activation
+    @activation.attributes = activation_attributes
+
+    if @activation.activate
+      @activation.deliver_confirmation
+
+      redirect_to(
+        activations_path, notice: I18n.t("cert.activation.success")
+      )
+    end
+  end
+
+  def render_errors(view_partial)
+    flash.now[:error] = I18n.t("cert.activation.errors")
+    render view_partial
+  end
+
+  def activation_attributes
+    form_attributes = activation_params
+
+    if !form_attributes[:user_attributes][:id]
+      form_attributes[:user_attributes][:id] = @activation.user_id
+    end
+
+    form_attributes
   end
 
   def activation_params

@@ -1,0 +1,10 @@
+<%= simple_form_for @activation do |f| %>
+  <%= f.simple_fields_for :user do |customer_form| %>
+    <%= customer_form.input :name %>
+    <%= customer_form.input :email %>
+    <%= customer_form.input :phone %>
+  <% end %>
+
+  <%= f.input :activation_code %>
+  <%= f.submit "Activate" %>
+<% end %>

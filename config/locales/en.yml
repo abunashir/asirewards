@@ -27,3 +27,9 @@ en:
       success:
         "New certificated has been added and one of the admin will
         approve it soon"
+
+    activation:
+      success:
+        "Your certificate has been activated"
+      errors:
+        "Please check activation details, something is not right"
