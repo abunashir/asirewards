@@ -1,23 +1,40 @@
-<p>
-<%= @certificate.title %>'s kits
-</p>
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title"><%= @certificate.title %> Customers</h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Status</th>
-    <th>Action</th>
-  </tr>
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
 
-  <% @kits.each do |kit| %>
-    <tr>
-      <td><%= kit.user.name %></td>
-      <td><%= kit.user.email %></td>
-      <td><%= kit.status %></td>
-      <td>Download</td>
-    </tr>
-  <% end %>
-</table>
+              <% @kits.each do |kit| %>
+                <tr>
+                  <td><%= kit.user.name %></td>
+                  <td><%= kit.user.email %></td>
+                  <td><%= kit.status %></td>
+                  <td>Download</td>
+                </tr>
+              <% end %>
+            </table>
 
-<%= link_to "Send certificate", new_certificate_kit_path(@certificate) %>
+            <br />
+            <%= link_to(
+              "Send certificate",
+              new_certificate_kit_path(@certificate),
+              class: "btn btn-primary"
+            ) %>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
