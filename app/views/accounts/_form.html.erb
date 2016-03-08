@@ -1,10 +1,14 @@
-<%= simple_form_for @account, url: account_path do |f| %>
+<%= simple_form_for @account, url: account_path,
+  html: { class: "form-horizontal" } do |f| %>
   <%= f.simple_fields_for :users do |user_form| %>
-    <%= user_form.input :name %>
-    <%= f.input :name, label: "Company" %>
-    <%= user_form.input :email %>
-    <%= user_form.input :password %>
+    <%= user_form.input :name, placeholder: "Full Name" %>
+    <%= f.input :name, label: "Company", placeholder: "Business Name" %>
+    <%= user_form.input :email, placeholder: "Email Address" %>
+    <%= user_form.input :password, placeholder: "Password" %>
     <%= user_form.input :admin, as: :hidden, input_html: { value: true } %>
   <% end %>
-  <%= f.submit %>
+
+  <br />
+  <%= f.submit "Create Account", class: "btn btn-lg btn-block btn-danger" %>
+
 <% end %>

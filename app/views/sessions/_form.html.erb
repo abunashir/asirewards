@@ -1,0 +1,9 @@
+<%= simple_form_for :session, url: session_path,
+  html: { class: "form-horizontal"} do |f| %>
+  <%= f.input :email, placeholder: "Email Address" %>
+  <%= f.input :password, placeholder: "Password" %>
+
+  <br />
+
+  <%= f.submit "Sign in", class: "btn btn-primary btn-lg btn-block" %>
+<% end %>
