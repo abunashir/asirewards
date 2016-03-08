@@ -1,5 +1,6 @@
 <header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero">
   <div class="container">
+
     <div class="row">
       <div class="col-md-6 dark-bg">
         <div class="slogan">
@@ -42,6 +43,7 @@
         <div class="form-container">
           <h3 class="title">Certificate Activation</h3>
 
+          <%= render "flashes" %>
 
           <%= simple_form_for @activation,
             html: {class: "form-horizontal"} do |f| %>

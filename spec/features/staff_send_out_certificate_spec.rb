@@ -39,8 +39,8 @@ feature "Send out certificates" do
   end
 
   def submit_certificate_sending_form(customer)
-    fill_in "Name", with: customer.name
-    fill_in "Email", with: customer.email
+    fill_in "Full Name *", with: customer.name
+    fill_in "Email Address *", with: customer.email
     click_on "Send certificate"
   end
 

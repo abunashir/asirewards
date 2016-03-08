@@ -12,12 +12,12 @@ feature "Certificate creation" do
       File.join(Rails.root, "/spec/factories/files/banner.png")
     )
 
-    fill_in "Title", with: "Mexico tour 2015"
-    fill_in "Sub title", with: "sub title section of the page"
-    fill_in "Terms", with: "Details html content about the tour"
-    fill_in "Expires on", with: "10/11/2016"
-    fill_in "Policies", with: "This should be the details policies"
-    fill_in "Price", with: 19.99
+    fill_in "certificate_title", with: "Mexico tour 2015"
+    fill_in "certificate_sub_title", with: "sub title section of the page"
+    fill_in "certificate_terms", with: "Details html content about the tour"
+    fill_in "certificate_expires_on", with: "10/11/2016"
+    fill_in "certificate_policies", with: "This should be the details policies"
+    fill_in "certificate_price", with: 19.99
     click_on "Create"
 
     expect(page).to have_content("Mexico tour 2015")

@@ -5,9 +5,9 @@ feature "Certificate activation" do
     customer, certificate_kit = create_certificate_and_customer
     visit activation_path(certificate_kit.code)
 
-    fill_in "Name", with: "Keith Thomson"
-    fill_in "Email", with: customer.email
-    fill_in "Phone", with: "012345678910"
+    fill_in "activation_user_attributes_name", with: "Keith Thomson"
+    fill_in "activation_user_attributes_email", with: customer.email
+    fill_in "activation_user_attributes_phone", with: "012345678910"
     click_on "Activate"
 
     expect_activation_page_to_have(customer, certificate_kit)
@@ -17,10 +17,10 @@ feature "Certificate activation" do
     customer, certificate_kit = create_certificate_and_customer
     visit root_path
 
-    fill_in "Name", with: "Keith Thomson"
-    fill_in "Email", with: customer.email
-    fill_in "Phone", with: "012345678910"
-    fill_in "Activation code", with: certificate_kit.activation_code
+    fill_in "activation_user_attributes_name", with: "Keith Thomson"
+    fill_in "activation_user_attributes_email", with: customer.email
+    fill_in "activation_user_attributes_phone", with: "012345678910"
+    fill_in "activation_activation_code", with: certificate_kit.activation_code
     click_on "Activate"
 
     expect_activation_page_to_have(customer, certificate_kit)

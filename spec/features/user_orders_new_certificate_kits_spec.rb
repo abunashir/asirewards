@@ -20,7 +20,6 @@ feature "Order certificate kits" do
     click_on "Create"
 
     expect(page).to have_content("Certificatecan't be blank")
-    expect(page).to have_content("Quantitycan't be blank")
   end
 
   def vist_order_new_certificate_kits

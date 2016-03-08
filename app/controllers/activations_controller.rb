@@ -16,7 +16,8 @@ class ActivationsController < ApplicationController
     if activation
       save_activation || render_errors(:index)
     else
-      redirect_to root_path, notice: I18n.t("cert.activation.errors")
+      flash[:error] = I18n.t("cert.activation.errors")
+      redirect_to root_path
     end
   end
 
