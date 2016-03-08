@@ -1,6 +1,21 @@
-<%= simple_form_for @order do |f| %>
-  <%= f.input :certificate_id, collection: current_user.certificates  %>
-  <%= f.input :quantity %>
-  <%= f.input :note %>
-  <%= f.submit %>
-<% end %>
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">New Order for Certificates</h3>
+
+          <%= simple_form_for @order, html: { class: "form-horizontal"} do |f| %>
+            <%= f.input :certificate_id, collection: current_user.certificates  %>
+            <%= f.input :quantity, placeholder: "Quantity *" %>
+            <%= f.input :note, placeholder: "Note" %>
+
+            <br />
+            <%= f.submit "Create Order", class: "btn btn-lg btn-block btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+

@@ -1,8 +1,25 @@
-<div class="order">
-  <h2><%= @order.certificate.title %></h2>
-  <p><%= @order.note %></p>
-  <p>Quantity: <%= @order.quantity %></p>
-  <p>Requested by: <%= @order.user.name %></p>
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">New Order for Certificates</h3>
 
-  <%= link_to "Approve", order_path(@order), method: :put %>
-</div>
+          <div class="order">
+            <h3><%= @order.certificate.title %></h3>
+            <p><%= @order.note %></p>
+            <p>Quantity: <%= @order.quantity %></p>
+            <p>Requested by: <%= @order.user.name %></p>
+
+            <%= link_to(
+              "Approve",
+              order_path(@order), method: :put,
+              class: "btn btn-lg btn-primary"
+            ) %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

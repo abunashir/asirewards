@@ -1,25 +1,46 @@
-<table>
-  <tr>
-    <th>Certificate title</th>
-    <th>Quantity</th>
-    <th>Note</th>
-    <th>Status</th>
-    <th>Actions</th>
-  </tr>
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">Certificate kit orders</h3>
 
-  <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.certificate.title %></td>
-      <td><%= order.quantity %></td>
-      <td><%= order.note %></td>
-      <td><%= order.status %></td>
-      <td>
-        <% if current_user.admin? %>
-          <%= link_to "details", order_path(order) %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th>Certificate title</th>
+                <th>Quantity</th>
+                <th>Note</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
 
-<%= link_to "Add new order", new_order_path %>
+              <% @orders.each do |order| %>
+                <tr>
+                  <td><%= order.certificate.title %></td>
+                  <td><%= order.quantity %></td>
+                  <td><%= order.note %></td>
+                  <td><%= order.status %></td>
+                  <td>
+                    <% if current_user.admin? %>
+                      <%= link_to "details", order_path(order) %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+
+            <br />
+            <%= link_to(
+              "Add new order",
+              new_order_path,
+              class: "btn btn-primary"
+            ) %>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
