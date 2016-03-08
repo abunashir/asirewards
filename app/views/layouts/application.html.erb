@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
-  <%#
-    Configure default and controller-, and view-specific titles in
-    config/locales/en.yml. For more see:
-    https://github.com/calebthompson/title#usage
-  %>
-  <title><%= title %></title>
-  <%= stylesheet_link_tag :application, media: "all" %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="<%= body_class %>">
-  <%= render "flashes" -%>
-  <%= yield %>
-  <%= render "javascript" %>
-</body>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="asi, rewards, certificate">
+    <meta name="keywords" content="asi, rewards, certificate">
+    <title>ASI Rewards</title>
+    <!--pageMeta-->
+
+    <%= stylesheet_link_tag :asirewards %>
+    <%= csrf_meta_tags %>
+
+    <!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+      <script src="scripts/respond.min.js"></script>
+    <![endif]-->
+    <!--headerIncludes-->
+  </head>
+
+  <body data-spy="scroll" data-target=".navMenuCollapse">
+    <div id="preloader">
+      <div class="loading-data"></div>
+    </div>
+
+    <div id="wrap">
+      <!-- navigation -->
+      <%= render "layouts/select/nav" %>
+
+      <!-- content -->
+      <%= yield %>
+
+      <!-- footer -->
+      <%= render "layouts/select/footer" %>
+
+    </div>
+
+      <!-- JavaScript -->
+      <%= javascript_include_tag :asirewards %>
+  </body>
 </html>

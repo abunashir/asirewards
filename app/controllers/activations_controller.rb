@@ -1,6 +1,4 @@
 class ActivationsController < ApplicationController
-  layout "asirewards"
-
   def index
     @activation = Activation.new
     @activation.build_user
