@@ -1,7 +1,7 @@
 class Kit < ActiveRecord::Base
   belongs_to :certificate
   belongs_to :user
-  accepts_nested_attributes_for :user, reject_if: :all_blank
+  accepts_nested_attributes_for :user
 
   delegate :title, :sub_title, :banner, :terms, :policies, to: :certificate
 

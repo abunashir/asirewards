@@ -20,6 +20,15 @@ feature "Send out certificates" do
     expect_certificate_kit_page_to_have(customer, certificate)
   end
 
+  scenario "staff try to send certificate to invalid customer" do
+    staff, _customer, _certificate = staff_customer_and_certificate
+    visit_sending_certificate_page(as: staff)
+    click_on "Send certificate"
+
+    expect(page).to have_content("can't be blank")
+    expect(page).to have_content("is invalid")
+  end
+
   def staff_customer_and_certificate
     staff = create(:user, admin: true)
     certificate = create(:certificate, company: staff.company)
