@@ -3,6 +3,27 @@
   padding-top: 120px;
 }
 
+.asirewards-hero.top60{
+  padding-top: 60px;
+
+  .form-group textarea, .certificate_banner input{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  }
+
+  .form-group textarea{
+    height: 120px;
+  }
+
+  .certificate_banner label{
+    display: none;
+  }
+
+  .certificate_banner input{
+    padding: 20px 25px 20px 0;
+    width: 100%;
+  }
+}
+
 .form-horizontal .form-group{
   margin-left: 0px;
   margin-right: 0px;

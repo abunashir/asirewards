@@ -2,6 +2,12 @@ class Certificate < ActiveRecord::Base
   belongs_to :company
   has_many :kits
 
+  validates :title, presence: true
+  validates :sub_title, presence: true
+  validates :terms, presence: true
+  validates :policies, presence: true
+  validates :price, presence: true
+
   delegate :available_kit, to: :kits
   delegate :available?, to: :kits
 
