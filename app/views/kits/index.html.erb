@@ -27,12 +27,21 @@
             </table>
 
             <br />
+
+            <% if @certificate.number_of_available_kits > 0 %>
+              <%= link_to(
+                "Send certificate",
+                new_certificate_kit_path(@certificate),
+                class: "btn btn-primary"
+              ) %>
+
+          <% else %>
             <%= link_to(
-              "Send certificate",
-              new_certificate_kit_path(@certificate),
-              class: "btn btn-primary"
+              "Order Certificate Kits", orders_path, class: "btn btn-primary"
             ) %>
-        </div>
+          <% end %>
+
+          </div>
 
 
         </div>

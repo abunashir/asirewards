@@ -21,7 +21,6 @@ feature "Certificate creation" do
     click_on "Create"
 
     expect(page).to have_content("Mexico tour 2015")
-    expect(page).to have_content("Pending")
     expect(Certificate.last.banner).not_to be_nil
   end
 end

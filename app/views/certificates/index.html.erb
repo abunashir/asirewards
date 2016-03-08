@@ -12,13 +12,15 @@
               <tr>
                 <th>Title</th>
                 <th>Status</th>
-                <th>Actiion</th>
+                <th>Available Kits</th>
+                <th>Actions</th>
               </tr>
 
               <% @certificates.each do |certificate| %>
                 <tr>
                   <td><%= certificate.title %></td>
                   <td><%= certificate.status %></td>
+                  <td><%= certificate.number_of_available_kits %></td>
 
                   <td>
                     <%= link_to "Kits", certificate_kits_path(certificate) %>

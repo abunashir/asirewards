@@ -42,6 +42,15 @@ describe Kit do
     end
   end
 
+  describe ".unused" do
+    it "scopes the kit to non used" do
+      pending_kit = create(:kit)
+      _used_kit  = create(:kit, used: true)
+
+      expect(Kit.unused.map(&:id)).to eq([pending_kit.id])
+    end
+  end
+
   describe "#mark_used!" do
     it "marks the kit as used" do
       kit = create(:kit, used: false)

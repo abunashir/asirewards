@@ -27,4 +27,14 @@ RSpec.describe Certificate, type: :model do
       expect(certificate.available_kit).to eq(certificate.kits.last)
     end
   end
+
+  describe "#number_of_available_kits" do
+    it "returns the number of unused kits" do
+      certificate = create(:certificate)
+      certificate.create_kit(number: 2)
+      certificate.kits.first.mark_used!
+
+      expect(certificate.number_of_available_kits).to eq(1)
+    end
+  end
 end

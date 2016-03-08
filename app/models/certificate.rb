@@ -14,7 +14,7 @@ class Certificate < ActiveRecord::Base
   mount_uploader :banner, BannerUploader
 
   def status
-    approved? ? "Active" : "Pending"
+    number_of_available_kits > 0 ? "Active" : "Pending"
   end
 
   def approved?
@@ -23,5 +23,9 @@ class Certificate < ActiveRecord::Base
 
   def create_kit(number:)
     number.to_i.times { |num|  kits.generate }
+  end
+
+  def number_of_available_kits
+    kits.unused.size
   end
 end

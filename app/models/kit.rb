@@ -41,6 +41,10 @@ class Kit < ActiveRecord::Base
     where(used: true)
   end
 
+  def self.unused
+    where(used: false)
+  end
+
   def self.available?
     available_kit.present?
   end
