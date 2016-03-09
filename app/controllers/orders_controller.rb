@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   private
 
   def order_scope
-    if current_user.admin?
+    if current_user.management_admin?
       Order.pending
     else
       current_user.orders

@@ -24,7 +24,7 @@
                   <td><%= order.note %></td>
                   <td><%= order.status %></td>
                   <td>
-                    <% if current_user.admin? %>
+                    <% if current_user.management_admin? %>
                       <%= link_to "details", order_path(order) %>
                     <% end %>
                   </td>
@@ -38,7 +38,7 @@
               new_order_path,
               class: "btn btn-primary"
             ) %>
-          </div>
+        </div>
 
 
         </div>

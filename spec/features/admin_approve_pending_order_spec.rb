@@ -4,7 +4,7 @@ feature "Order approval" do
   scenario "admin approves pending order" do
     order = create(:order)
 
-    visit root_path(as: create(:admin))
+    visit root_path(as: create(:admin, company: create(:company, owner: true)))
     visit marketer_path
 
     click_on "Orders"

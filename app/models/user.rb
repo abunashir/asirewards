@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   delegate :staffs, to: :company, allow_nil: true, prefix: true
   delegate :certificates, to: :company
 
+  def management_admin?
+    admin? && company.try(:owner?)
+  end
+
   private
 
   def password_optional?
