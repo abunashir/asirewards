@@ -1,5 +1,5 @@
 class CertificateSender < ApplicationMailer
-  default from: "certificate@asirewards.io"
+  default from: "ASI Rewards <certificate@asirewards.io>"
 
   def release(certificate_kit_id)
     @certificate_kit = Kit.find(certificate_kit_id)
@@ -9,7 +9,7 @@ class CertificateSender < ApplicationMailer
 
     mail(
       to: @certificate_kit.user.email,
-      subject: "Pack your back, your certificate is here"
+      subject: "Pack your bags – Your certificate is here!"
     )
   end
 end

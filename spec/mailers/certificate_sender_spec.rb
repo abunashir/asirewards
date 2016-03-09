@@ -12,7 +12,7 @@ describe CertificateSender do
 
       email = CertificateSender.release(certificate_kit.id)
 
-      expect(email.subject).to include("Pack your back, your certificate")
+      expect(email.subject).to include("Pack your bags – Your certificate")
       expect(email.from).to eq(["certificate@asirewards.io"])
       expect(email.to).to include(user.email)
       expect(email.body.encoded).to include("To activate the certificate")

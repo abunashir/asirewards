@@ -1,13 +1,43 @@
+<p>Dear <%= @certificate_kit.user.name %>,</p>
+
 <p>
-Please see your certificate attached, you are one step closer to going on your holiday. To activate the certificate please
+Please see your certificate attached, you are one step closer to going on your
+holiday <br />
 
+To activate the certificate please
 <%= link_to(
-  "click on this link", activation_url(@certificate_kit.activation_code)
-)%>
+  "click on this link",
+  activation_url(@certificate_kit.activation_code.downcase)
+) %>
 
-or <%= link_to "go to", root_url %> to activate using the code displayed on your certificate.
+or go to
+<%= link_to root_url, root_url %>
+
+to activate using the code displayed on your certificate attached here.
 </p>
 
 <p>
 You have 12 months to activate, and then another 12 months to make your booking.
+</p>
+
+<p>
+Your Certificate is personal and can not be transferred. The Certificate is for
+accommodation only, and can not be exchanged for cash, credit or any other goods
+or services.
+</p>
+
+<p>
+This promotion is subject to activation, and booking terms and conditions apply.
+Terms and conditions vary depending on the destination and property chosen.
+Full booking details and terms will be provided once this Certificate has been
+activated and a booking request has been submitted.
+</p>
+
+<p>
+As some destinations fill up early, we recommend that your activate and book
+your stay as early as possible.
+</p>
+
+<p>
+We look forward to hearing from you and to helping you book your dream holiday.
 </p>

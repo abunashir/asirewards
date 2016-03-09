@@ -14,7 +14,7 @@ describe Activation do
   describe ".find_by_code" do
     it "finds the kit using activation code" do
       pending_kit = create(:activation, code: "1234ABC")
-      expect(Activation.find_by_code("BMM1234ABC")).to eq(pending_kit)
+      expect(Activation.find_by_code("BMM1234aBC")).to eq(pending_kit)
     end
   end
 

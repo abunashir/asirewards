@@ -17,7 +17,7 @@ class Activation < Kit
   def self.find_by_code(kit_activation_code)
     if kit_activation_code
       kit_code= kit_activation_code.split(//).last(7).join
-      pending.where(code: kit_code).last
+      pending.where(code: kit_code.upcase).last
     end
   end
 end

@@ -13,9 +13,9 @@ describe ActivationConfirmation do
 
       email = ActivationConfirmation.release(certificate_kit.id)
 
-      expect(email.subject).to eq("Your certificate has been activated")
+      expect(email.subject).to include("Your certificate has been activated")
       expect(email.from).to eq(["certificate@asirewards.io"])
-      expect(email.body.encoded).to include("Next step is to book")
+      expect(email.body.encoded).to include("You now have 12 months to submit")
     end
   end
 end
