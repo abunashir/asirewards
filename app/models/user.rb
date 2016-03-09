@@ -5,8 +5,12 @@ class User < ActiveRecord::Base
   has_many :kits
   has_many :orders
 
+  attr_accessor :name_part_one, :name_part_two
+  before_validation :build_user_name
+
   validates :name, presence: true
   validates :email, presence: true
+  validates :name_part_one, :name_part_two, presence: true, allow_blank: true
 
   delegate :staffs, to: :company, allow_nil: true, prefix: true
   delegate :certificates, to: :company
@@ -19,5 +23,11 @@ class User < ActiveRecord::Base
 
   def password_optional?
     !password.present?
+  end
+
+  def build_user_name
+    if name_part_one.present?
+      self.name = [name_part_one, name_part_two].compact.join(" ")
+    end
   end
 end

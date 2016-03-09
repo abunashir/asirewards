@@ -47,10 +47,11 @@
 
           <%= simple_form_for @activation,
             html: {class: "form-horizontal"} do |f| %>
-            <%= f.simple_fields_for :user do |customer_form| %>
-              <%= customer_form.input :name, placeholder: "Full Name *" %>
-              <%= customer_form.input :email, placeholder: "Email Address *" %>
-              <%= customer_form.input :phone, placeholder: "Phone Number *" %>
+            <%= f.simple_fields_for :user do |user_form| %>
+              <%= user_form.input :name_part_one, placeholder: "First Name *" %>
+              <%= user_form.input :name_part_two, placeholder: "Last Name *" %>
+              <%= user_form.input :email, placeholder: "Email Address *" %>
+              <%= user_form.input :phone, placeholder: "Phone Number *" %>
             <% end %>
 
             <%= f.input :activation_code, placeholder: "Activation Code *" %>

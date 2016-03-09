@@ -65,7 +65,8 @@ class ActivationsController < ApplicationController
 
   def activation_params
     params.require(:activation).permit(
-      :activation_code, user_attributes: [:id, :name, :email, :phone]
+      :activation_code,
+      user_attributes: [:id, :name_part_one, :name_part_two, :email, :phone]
     )
   end
 end
