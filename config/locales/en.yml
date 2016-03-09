@@ -42,3 +42,8 @@ en:
         been entered by the client."
       success: ""
       errors: ""
+
+  staff:
+    create:
+      success: "Staff has been added to your business!"
+      errors: "You need to provide the requried staff fields"

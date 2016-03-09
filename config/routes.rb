@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :orders
   resources :activations
   resource :marketer
+  resources :staffs
 end

@@ -39,6 +39,10 @@
           <li><%= link_to "Certificates", certificates_path %></li>
           <li><%= link_to "Orders", orders_path %></li>
           <li><%= link_to "Customers", "#" %></li>
+
+          <% if current_user.admin? %>
+            <li><%= link_to "Staffs", staffs_path %></li>
+          <% end %>
         <% else %>
 
           <li><a href="#activation">Activation</a></li>

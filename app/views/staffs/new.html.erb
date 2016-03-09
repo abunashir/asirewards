@@ -1,0 +1,27 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">Add New Busienss Staff</h3>
+
+          <%= render "flashes" %>
+
+          <%= simple_form_for @staff, url: staffs_path,
+            html: { class: "form-horizontal"}  do |f| %>
+            <%= f.input :name, placeholder: "Full Name *" %>
+            <%= f.input :email, placeholder: "Email Address *" %>
+            <%= f.input :phone, placeholder: "Phone Number" %>
+            <%= f.input :password, placeholder: "Password" %>
+
+            <br />
+            <%= f.submit(
+              "Create Staff", class: "btn btn-lg btn-block btn-primary"
+            ) %>
+
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
