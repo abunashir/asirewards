@@ -45,6 +45,10 @@ class Kit < ActiveRecord::Base
     where(used: false)
   end
 
+  def self.recent(total = 10)
+    order(created_at: :desc).limit(total)
+  end
+
   def self.available?
     available_kit.present?
   end

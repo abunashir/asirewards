@@ -51,6 +51,18 @@ describe Kit do
     end
   end
 
+  describe ".recent" do
+    it "order the kits based on last created at" do
+      kit_one = create(:kit, created_at: 1.days.ago)
+      kit_two = create(:kit)
+      kit_three = create(:kit, created_at: 5.days.ago)
+
+      expect(
+        Kit.recent.map(&:id)
+      ).to eq([kit_two, kit_one, kit_three].map(&:id))
+    end
+  end
+
   describe "#mark_used!" do
     it "marks the kit as used" do
       kit = create(:kit, used: false)

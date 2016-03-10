@@ -2,7 +2,7 @@ class KitsController < ApplicationController
   before_action :require_login
 
   def index
-    @kits = certificate.kits.used
+    @kits = certificate.kits.used.recent
   end
 
   def new
