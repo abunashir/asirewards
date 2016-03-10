@@ -14,7 +14,10 @@ class CertificatesController < ApplicationController
     @certificate = current_user.certificates.new(certificate_params)
 
     if @certificate.save
-      redirect_to certificates_path, notice: I18n.t("cert.create.success")
+      redirect_to(
+        certificate_content_path(@certificate),
+        notice: I18n.t("cert.create.success")
+      )
     else
       render :new
     end

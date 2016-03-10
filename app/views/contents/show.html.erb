@@ -1,0 +1,46 @@
+<div
+  id="certificate_wrapper"
+  class="certificate_pdf certificate_wrapper"
+  data-source="<%= certificate_content_path(@certificate) %>" >
+
+  <div class="banner">
+    <%= image_tag @content.banner %>
+  </div>
+
+  <div class="titles">
+    <div class="editable header" data-name="content[title]">
+      <%= raw(@content.title || t("certificate.content.title")) %>
+    </div>
+
+    <div class="editable sub_header" data-name="content[sub_title]">
+      <%= raw(@content.sub_title || t("certificate.content.sub_title")) %>
+    </div>
+  </div>
+
+  <div class="editable terms" data-name="content[terms]">
+    <%= raw(@content.terms || t("certificate.content.terms")) %>
+  </div>
+
+  <div class="code">
+    <div class="certificate_code">
+      <span class="activation_code">[certificate_code]</span><br />
+      Expires on: 31 December 2016
+    </div>
+  </div>
+
+  <div class="editable policies" data-name="content[policies]">
+    <%= raw(@content.policies || t("certificate.content.policies")) %>
+  </div>
+</div>
+
+<div class="approval_button">
+  <p>Only if you are happy with the content then please click on the following link to submit this content for admin approval, please remember there is no editing functionality for this certificate content, so double check before you submit this content.
+  <p>
+
+  <p>
+  <%= link_to(
+    "Submit for approval",
+    certificate_content_path(@certificate, ready: true)
+  ) %>
+</p>
+</div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :certificates do
     resource :preview, only: :show
+    resource :content
     resources :kits
   end
 

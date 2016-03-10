@@ -11,3 +11,5 @@ Rails.application.config.assets.version = (ENV["ASSETS_VERSION"] || "1.0")
 # Rails.application.config.assets.precompile += %w( search.js )
 #
 Rails.application.config.assets.precompile += %w( asirewards.css asirewards.js)
+Rails.application.config.assets.precompile += %w(certificate_editor.css)
+Rails.application.config.assets.precompile += %w(certificate_editor.js)

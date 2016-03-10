@@ -1,0 +1,69 @@
+@import "ContentTools/content-tools";
+
+body{
+  background: #eee;
+  font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+  text-align: justify;
+
+  .certificate_wrapper{
+    width: 595px;
+    margin: 20px auto;
+    padding: 100px;
+    border: 1px solid #d1d1d1;
+    background: #fff;
+    line-height: 1.3;
+
+    .banner{
+      img{
+        width: 595px;
+      }
+    }
+
+    .titles{
+      padding-top: 20px;
+
+      h2{
+        text-align: center;
+      }
+
+      p{
+        padding: 15px 0;
+      }
+    }
+
+    .strong{
+      font-weight: bold;
+    }
+
+    ul li, ol li{
+      margin: 10px 0px;
+    }
+
+    .code{
+      .certificate_code{
+        width: 250px;
+        margin: 35px auto;
+        border: 1px solid #d1d1d1;
+        text-align: center;
+        padding: 25px;
+        font-size: 1em;
+
+        .activation_code{
+          font-size: 1.5em;
+        }
+      }
+    }
+  }
+
+  .approval_button{
+    width: 750px;
+    margin: 15px auto 30px;
+    text-align: center;
+    line-height: 1.3;
+
+    a{
+      font-size: 1.5em;
+      color: #3C8BBE;
+    }
+  }
+}

@@ -52,3 +52,33 @@ en:
     create:
       success: "Staff has been added to your business!"
       errors: "You need to provide the requried staff fields"
+
+  certificate:
+    content:
+      create:
+        ready: "Your certificate has been submitted for admin approval"
+
+      title:
+        "<h2>Click on the left blue icon to start editing, then click to this section to put your certificate header, Example: 5 Nights in a Luxery Resort!</h2>"
+
+      sub_title:
+        "<p>Enter certificate description here, why not describing how it makes your certificate the best compared to the average certificate providers. You are not limited to words but keeping under 250 makes it more attractive.</p>"
+
+      terms:
+        "<p class=\"strong\">Terms & Conditions</p>
+        <p>Enter the details terms and conditions reagarding this certificate, let's make sure you touch all basic points so we can use this if any customer is complaing about any of of the existing terms </p>
+
+        <ol>
+        <li>This is the poing one for your terms and condtions, simple edit one and then click enter should give you the second options to add another</li>
+        </ol>
+
+        <p>Once done then let's move the next one, certificate polices. Oh, don't worry the certificate code section, our system will automatically put the certificate code there.</p>"
+
+      policies:
+        "<p class=\"strong\">Policies</p>
+        <p>Enter your policies reagarding this certificate, let's make sure you touch
+        all basic points so we can use this as reference if there is any legal issue</p>
+
+        <ul>
+        <li>This is the poing one for your terms and condtions, simple edit one and then click enter should give you the second options to add another</li>
+        </ul>"
