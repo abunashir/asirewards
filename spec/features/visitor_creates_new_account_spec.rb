@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Account creation" do
-  scenario "create new account" do
+  scenario "visitor create new account" do
     visit new_account_path
 
     fill_in "Full Name", with: "Abu Nashir"

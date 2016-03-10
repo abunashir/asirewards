@@ -35,15 +35,18 @@
                 class: "btn btn-primary"
               ) %>
 
-          <% else %>
+          <% elsif current_user.admin? %>
             <%= link_to(
               "Order Certificate Kits", orders_path, class: "btn btn-primary"
             ) %>
-          <% end %>
+
+        <% else %>
+          <div class="alert alert-danger" role="alert">
+            <%= t("kit.available.none") %>
+          </div>
+        <% end %>
 
           </div>
-
-
         </div>
       </div>
     </div>

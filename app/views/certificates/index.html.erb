@@ -23,7 +23,7 @@
                   <td><%= certificate.number_of_available_kits %></td>
 
                   <td>
-                    <%= link_to "Kits", certificate_kits_path(certificate) %>
+                    <%= link_to "Send kit", certificate_kits_path(certificate) %>
                     <%= link_to "Preview", certificate_preview_path(certificate) %>
                   </td>
                 </tr>
@@ -33,15 +33,15 @@
 
             <br />
 
-            <%= link_to(
-              "New Certificate",
-              new_certificate_path,
-              class: "btn btn-primary"
-            )
-          %>
-        </div>
+            <% if current_user.admin? %>
+              <%= link_to(
+                "New Certificate",
+                new_certificate_path,
+                class: "btn btn-primary"
+              ) %>
+          <% end %>
 
-
+          </div>
         </div>
       </div>
     </div>

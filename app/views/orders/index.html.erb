@@ -33,14 +33,15 @@
             </table>
 
             <br />
-            <%= link_to(
-              "Add new order",
-              new_order_path,
-              class: "btn btn-primary"
-            ) %>
-        </div>
+            <% if current_user.admin? %>
+              <%= link_to(
+                "Add new order",
+                new_order_path,
+                class: "btn btn-primary"
+              ) %>
+          <% end %>
 
-
+          </div>
         </div>
       </div>
     </div>

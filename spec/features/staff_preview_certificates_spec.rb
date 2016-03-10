@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Certificate previewing" do
-  scenario "user preview his own certificate" do
+  scenario "staff preview certificates" do
     user = create(:user)
     certificate = create(:certificate, company: user.company)
 

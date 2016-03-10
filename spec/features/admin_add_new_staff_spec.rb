@@ -1,10 +1,10 @@
 require "rails_helper"
 
 feature "Business staff" do
-  scenario "Business admin add new staff for business" do
+  scenario "admin add new staff for business" do
     business_admin = create(:user, admin: true)
     visit root_path(as: business_admin)
-    click_on "Staffs"
+    click_on "Staff"
     click_on "Add new staff"
 
     fill_in "user_name", with: "Itje Wylar"

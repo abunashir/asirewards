@@ -1,8 +1,8 @@
 require "rails_helper"
 
 feature "Certificate creation" do
-  scenario "user creates certificate" do
-    visit root_path(as: create(:user))
+  scenario "admin creates certificate" do
+    visit root_path(as: create(:user, admin: true))
     visit marketer_path
 
     click_on "New Certificate"

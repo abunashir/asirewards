@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Viewing orders" do
-  scenario "business can view their own orders" do
+  scenario "admin views order history" do
     marketer = create(:user, role: "staff", admin: true)
     order_one = create(:order, user: marketer)
     order_two = create(

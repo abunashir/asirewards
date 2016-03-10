@@ -43,7 +43,7 @@ feature "Send out certificates" do
     visit marketer_path
 
     click_on "Certificates"
-    click_on "Kits"
+    click_on "Send kit"
     click_on "Send certificate"
   end
 

@@ -43,6 +43,11 @@ en:
       success: ""
       errors: ""
 
+    available:
+      none:
+        "You don't have enough certificate kits, please ask your admin to order
+        some certificate kits."
+
   staff:
     create:
       success: "Staff has been added to your business!"
