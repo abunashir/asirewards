@@ -4,12 +4,12 @@ feature "Order certificate kits" do
   scenario "admin orders certificate kits" do
     certificate = vist_order_new_certificate_kits
 
-    select certificate.title, from: "order_certificate_id"
+    select certificate.name, from: "order_certificate_id"
     fill_in "order_quantity", with: 20
     fill_in "order_note", with: "This is special note"
     click_on "Create"
 
-    expect(page).to have_content(certificate.title)
+    expect(page).to have_content(certificate.name)
     expect(page).to have_content(20)
     expect(page).to have_content("Pending")
   end

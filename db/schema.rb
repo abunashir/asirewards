@@ -11,24 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309093552) do
+ActiveRecord::Schema.define(version: 20160314074159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "certificates", force: :cascade do |t|
-    t.string   "banner"
-    t.text     "title"
-    t.text     "sub_title"
-    t.text     "terms"
-    t.date     "expires_on"
     t.decimal  "price"
-    t.text     "policies"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.date     "approved_on"
     t.string   "code_prefix"
     t.integer  "company_id"
+    t.string   "name"
   end
 
   add_index "certificates", ["company_id"], name: "index_certificates_on_company_id", using: :btree
@@ -39,6 +34,19 @@ ActiveRecord::Schema.define(version: 20160309093552) do
     t.datetime "updated_at",                 null: false
     t.boolean  "owner",      default: false
   end
+
+  create_table "contents", force: :cascade do |t|
+    t.integer  "certificate_id"
+    t.text     "title"
+    t.text     "sub_title"
+    t.text     "terms"
+    t.text     "policies"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "banner"
+  end
+
+  add_index "contents", ["certificate_id"], name: "index_contents_on_certificate_id", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -102,6 +110,7 @@ ActiveRecord::Schema.define(version: 20160309093552) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "certificates", "companies"
+  add_foreign_key "contents", "certificates"
   add_foreign_key "kits", "certificates"
   add_foreign_key "kits", "users"
   add_foreign_key "orders", "certificates"

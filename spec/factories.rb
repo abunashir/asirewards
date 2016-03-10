@@ -1,4 +1,12 @@
 FactoryGirl.define do
+  factory :content do
+    association :certificate
+    title "Certificat title"
+    sub_title "Certificate Sub title"
+    terms "Details tersm section"
+    policies "Details policy section"
+  end
+
   factory :kit do
     association :certificate
     code "ABCD123"
@@ -18,13 +26,7 @@ FactoryGirl.define do
 
   factory :certificate do
     association :company
-
-    banner "Banner Image"
-    title "Reward Certificate"
-    sub_title "Enjoy unlimited benifits from us"
-    terms "Details terms about the certificate"
-    policies "Basic policies about certificate"
-    expires_on "2016-02-29"
+    name "Reward Certificate"
     price "199.99"
   end
 

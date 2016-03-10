@@ -1,17 +1,18 @@
 class Certificate < ActiveRecord::Base
   belongs_to :company
-  has_many :kits
+  has_many :kits, dependent: :destroy
+  has_many :contents, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
-  validates :title, presence: true
-  validates :sub_title, presence: true
-  validates :terms, presence: true
-  validates :policies, presence: true
+  accepts_nested_attributes_for :contents
+
+  validates :name, presence: true
   validates :price, presence: true
 
   delegate :available_kit, to: :kits
   delegate :available?, to: :kits
-
-  mount_uploader :banner, BannerUploader
+  delegate :banner, :title, :sub_title, to: :content, allow_nil: true
+  delegate :terms, :policies, to: :content, allow_nil: true
 
   def status
     number_of_available_kits > 0 ? "Active" : "Pending"
@@ -27,5 +28,9 @@ class Certificate < ActiveRecord::Base
 
   def number_of_available_kits
     kits.unused.size
+  end
+
+  def content
+    contents.last
   end
 end

@@ -11,7 +11,7 @@ feature "Order approval" do
     click_on "details"
     click_on "Approve"
 
-    expect(page).not_to have_content(order.certificate.title)
+    expect(page).not_to have_content(order.certificate.name)
     expect(order.certificate.kits.count).to eq(order.quantity)
   end
 end

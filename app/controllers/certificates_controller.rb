@@ -7,6 +7,7 @@ class CertificatesController < ApplicationController
 
   def new
     @certificate = current_user.certificates.new
+    @certificate.contents.build
   end
 
   def create
@@ -23,7 +24,7 @@ class CertificatesController < ApplicationController
 
   def certificate_params
     params.require(:certificate).permit(
-      :banner, :title, :sub_title, :terms, :policies, :price, :expires_on
+      :name, :price, contents_attributes: [:banner]
     )
   end
 end
