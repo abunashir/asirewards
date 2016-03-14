@@ -1,10 +1,15 @@
 <%= simple_form_for @certificate,
   html: { class: "form-horizontal" } do |f| %>
   <%= f.input :name, placeholder: "Title *" %>
+
   <%= f.simple_fields_for :contents do |content_form| %>
-    <%= content_form.input :banner, as: :file %>
+    <%= content_form.input(
+      :banner, as: :file, label: "Banner (Minimum width: 1000px)" ) %>
   <% end %>
+
   <%= f.input :price, placeholder: "Retails Price *" %>
+  <%= f.input :expires_in, placeholder: "Expiration in number of months *" %>
+  <%= f.input :duration, placeholder: "Duration in number of days *" %>
 
   <br />
   <%= f.submit "Create certificate", class: "btn btn-lg btn-block btn-primary" %>

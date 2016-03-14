@@ -8,6 +8,8 @@ class Certificate < ActiveRecord::Base
 
   validates :name, presence: true
   validates :price, presence: true
+  validates :expires_in, presence: true
+  validates :duration, presence: true
 
   delegate :available_kit, to: :kits
   delegate :available?, to: :kits

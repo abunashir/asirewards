@@ -27,7 +27,7 @@ class CertificatesController < ApplicationController
 
   def certificate_params
     params.require(:certificate).permit(
-      :name, :price, contents_attributes: [:banner]
+      :name, :price, :expires_in, :duration, contents_attributes: [:banner]
     )
   end
 end

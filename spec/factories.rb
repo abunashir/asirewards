@@ -28,6 +28,8 @@ FactoryGirl.define do
     association :company
     name "Reward Certificate"
     price "199.99"
+    expires_in 12
+    duration 7
   end
 
   factory :company do
