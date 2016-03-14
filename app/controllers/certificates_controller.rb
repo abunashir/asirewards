@@ -5,6 +5,11 @@ class CertificatesController < ApplicationController
     @certificates = current_user.certificates
   end
 
+  def show
+    @certificate = current_user.certificates.find(params[:id])
+    render layout: "certificate"
+  end
+
   def new
     @certificate = current_user.certificates.new
     @certificate.contents.build

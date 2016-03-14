@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resource :account
 
   resources :certificates do
-    resource :preview, only: :show
     resource :content
     resources :kits
   end

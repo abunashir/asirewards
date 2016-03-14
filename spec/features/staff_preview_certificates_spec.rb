@@ -4,6 +4,7 @@ feature "Certificate previewing" do
   scenario "staff preview certificates" do
     user = create(:user)
     certificate = create(:certificate, company: user.company)
+    create(:content, certificate: certificate)
 
     visit root_path(as: user)
     visit marketer_path
