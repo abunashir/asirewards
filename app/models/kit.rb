@@ -3,7 +3,8 @@ class Kit < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :user
 
-  delegate :title, :sub_title, :banner, :terms, :policies, to: :certificate
+  delegate :name, :title, :sub_title, :banner, to: :certificate
+  delegate :terms, :policies, to: :certificate
 
   def send_certificate
     if save

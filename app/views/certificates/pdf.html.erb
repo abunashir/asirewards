@@ -1,20 +1,36 @@
-<div class="banner">
-  <%= image_tag certificate_kit.banner %>
-</div>
+<div class="certificate_pdf certificate_wrapper">
+  <div class="banner">
+    <%= image_tag certificate_kit.certificate.banner %>
+  </div>
 
-<div class="titles">
-  <h2><%= certificate_kit.title %></h2>
-  <p><%= certificate_kit.sub_title %></p>
-</div>
+  <div class="titles">
+    <div class="header">
+      <%= raw(certificate_kit.title) %>
+    </div>
 
-<div class="terms">
-  <%= certificate_kit.terms %>
-</div>
+    <div class="sub_header">
+      <%= raw(certificate_kit.sub_title) %>
+    </div>
+  </div>
 
-<div class="code">
-  <%= certificate_kit.activation_code %>
-</div>
+  <div class="terms">
+    <%= raw(certificate_kit.terms) %>
+  </div>
 
-<div class class="policy">
-  <p><%= certificate_kit.policies %></p>
+  <div class="code">
+    <div class="certificate_code">
+      <span class="activation_code">
+        <%= certificate_kit.activation_code %>
+      </span>
+
+      <br />
+      Expires on:
+      <%= certificate_kit.certificate.expires_in.months.
+      from_now.to_date.to_s(:long) %>
+    </div>
+  </div>
+
+  <div class="policies">
+    <%= raw(certificate_kit.policies) %>
+  </div>
 </div>

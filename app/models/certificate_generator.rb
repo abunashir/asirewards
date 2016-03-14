@@ -14,8 +14,13 @@ class CertificateGenerator
     kit.to_pdf
   end
 
+  def to_pdf_file
+    kit = PDFKit.new(as_html)
+    kit.to_file("tmp/certificate.pdf")
+  end
+
   def filename
-    "#{certificate_kit.title}.pdf"
+    "#{certificate_kit.name}.pdf"
   end
 
   def render_attributes

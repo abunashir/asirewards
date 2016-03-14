@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-container">
-          <h3 class="title"><%= @certificate.title %> Customers</h3>
+          <h3 class="title"><%= @certificate.name %> Customers</h3>
 
           <%= render "flashes" %>
 
@@ -21,7 +21,12 @@
                   <td><%= kit.user.name %></td>
                   <td><%= kit.user.email %></td>
                   <td><%= kit.status %></td>
-                  <td>Download</td>
+                  <td>
+                    <%= link_to(
+                      "Download",
+                      certificate_kit_download_path(kit.certificate, kit, format: :pdf)
+                    ) %>
+                </td>
                 </tr>
               <% end %>
             </table>

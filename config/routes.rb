@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :certificates do
     resource :content
-    resources :kits
+    resources :kits do
+      resource :download
+    end
   end
 
   resources :orders
