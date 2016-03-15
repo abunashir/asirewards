@@ -2,21 +2,21 @@ class CertificatesController < ApplicationController
   before_action :require_login
 
   def index
-    @certificates = current_user.certificates
+    @certificates = certificates
   end
 
   def show
-    @certificate = current_user.certificates.find(params[:id])
+    @certificate = certificates.find(params[:id])
     render layout: "certificate"
   end
 
   def new
-    @certificate = current_user.certificates.new
+    @certificate = certificates.new
     @certificate.contents.build
   end
 
   def create
-    @certificate = current_user.certificates.new(certificate_params)
+    @certificate = certificates.new(certificate_params)
 
     if @certificate.save
       redirect_to(
@@ -29,6 +29,10 @@ class CertificatesController < ApplicationController
   end
 
   private
+
+  def certificates
+    current_user.certificates
+  end
 
   def certificate_params
     params.require(:certificate).permit(
