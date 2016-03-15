@@ -24,6 +24,7 @@ gem "fog"
 gem "pdfkit"
 gem "render_anywhere", require: false
 gem "bootstrap-sass", "~> 3.3.6"
+gem "country_select"
 
 group :development do
   gem "quiet_assets"

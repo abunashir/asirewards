@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :destination do
+    name "Raddission Blue"
+    banner "image"
+    content "This is the details description about the destination"
+    location "Bangkok"
+    country "Thailand"
+    active true
+  end
+
   factory :content do
     association :certificate
     title "Certificat title"

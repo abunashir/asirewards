@@ -82,3 +82,8 @@ en:
         <ul>
         <li>This is the poing one for your terms and condtions, simple edit one and then click enter should give you the second options to add another</li>
         </ul>"
+
+  destination:
+    create:
+      success: "Your destination has been added successfully!"
+      errors: "Please fix the errors before adding the destination"

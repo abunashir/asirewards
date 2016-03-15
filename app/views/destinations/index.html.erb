@@ -1,0 +1,42 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">Destinations</h3>
+
+          <%= render "flashes" %>
+
+          <div class="table-responsive">
+
+            <table class="table">
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Status</th>
+              </tr>
+
+              <% @destinations.each do |destination| %>
+                <tr>
+                  <td><%= destination.name %></td>
+                  <td><%= destination.location %></td>
+                  <td><%= destination.status %></td>
+                </tr>
+              <% end %>
+            </table>
+            <br />
+
+            <% if current_user.management_admin? %>
+              <%= link_to(
+                "Add new destination",
+                new_destination_path,
+                class: "btn btn-primary"
+              ) %>
+          <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
