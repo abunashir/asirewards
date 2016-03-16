@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resource :account
 
   resources :certificates do
+    resources :destinations, controller: "certificate_destinations"
     resource :content
     resources :kits do
       resource :download

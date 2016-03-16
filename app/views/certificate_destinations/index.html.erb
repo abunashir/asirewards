@@ -1,0 +1,44 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">Certificate Destinations</h3>
+
+          <%= render "flashes" %>
+
+          <div class="table-responsive">
+
+            <table class="table">
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Country</th>
+                <th>Actions</th>
+              </tr>
+
+              <% @destinations.each do |destination| %>
+                <tr>
+                  <td><%= destination.name %></td>
+                  <td><%= destination.location %></td>
+                  <td><%= destination.country %></td>
+                  <td>Remove</td>
+                </tr>
+              <% end %>
+            </table>
+            <br />
+
+            <% if current_user.admin? %>
+              <%= link_to(
+                "Add destinations",
+                new_certificate_destination_path(@certificate),
+                class: "btn btn-primary"
+              ) %>
+          <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

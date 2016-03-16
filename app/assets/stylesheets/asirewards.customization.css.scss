@@ -59,3 +59,27 @@
   background-color: rgb(255, 255, 255);
   color: #222;
 }
+
+.certificate_destinations{
+  margin: 10px 0;
+
+  .form-group{
+    width: 100%;
+
+    label.check_boxes{
+      display: none;
+    }
+
+    span.checkbox{
+      float: left;
+      width: 33%;
+
+      input.check_boxes{
+        margin-right: 5px;
+        -webkit-appearance: checkbox;
+        -moz-appearance:    checkbox;
+        appearance:         checkbox;
+      }
+    }
+  }
+}

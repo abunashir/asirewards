@@ -87,3 +87,8 @@ en:
     create:
       success: "Your destination has been added successfully!"
       errors: "Please fix the errors before adding the destination"
+
+  certificate_destination:
+    create:
+      success: "Selected destinations has been added to this certificate"
+      errors: "Please fix the following errors before adding those destination"

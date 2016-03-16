@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315091452) do
+ActiveRecord::Schema.define(version: 20160316113804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 20160315091452) do
   end
 
   add_index "certificates", ["company_id"], name: "index_certificates_on_company_id", using: :btree
+
+  create_table "certificates_destinations", id: false, force: :cascade do |t|
+    t.integer "certificate_id", null: false
+    t.integer "destination_id", null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"

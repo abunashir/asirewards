@@ -2,6 +2,7 @@ class Destination < ActiveRecord::Base
   validates :name, presence: true
   validates :location, presence: true
   validates :country, presence: true
+  has_and_belongs_to_many :certificates
 
   mount_uploader :banner, BannerUploader
 

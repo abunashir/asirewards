@@ -3,6 +3,7 @@ class Certificate < ActiveRecord::Base
   has_many :kits, dependent: :destroy
   has_many :contents, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_and_belongs_to_many :destinations
 
   accepts_nested_attributes_for :contents
 

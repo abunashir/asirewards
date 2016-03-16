@@ -23,6 +23,9 @@
                   <td><%= certificate.number_of_available_kits %></td>
 
                   <td>
+                    <%= link_to(
+                      "Destinations", certificate_destinations_path(certificate)
+                    ) %>
                     <%= link_to "Send kit", certificate_kits_path(certificate) %>
                     <%= link_to(
                       "Preview", certificate_path(certificate), target: "_blank"
