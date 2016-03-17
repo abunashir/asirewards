@@ -3,6 +3,25 @@
   padding-top: 120px;
 }
 
+.destinations-hero{
+  background-image: asset-url("destinations-hero.jpg");
+
+  .dark-bg h2{
+    margin-bottom: 0px;
+  }
+}
+
+.asirewards-destinations{
+  img.img-responsive{
+    max-height: 230px;
+  }
+
+  div.destination{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
 .asirewards-hero.top60{
   padding-top: 60px;
 
@@ -82,4 +101,12 @@
       }
     }
   }
+}
+
+section#featured{
+  padding-bottom: 30px;
+}
+
+.list_destinations{
+  margin-top: 20px;
 }

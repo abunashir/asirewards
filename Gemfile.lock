@@ -233,6 +233,8 @@ GEM
       activesupport
       capybara
       i18n
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashdiff (0.3.0)
@@ -327,6 +329,7 @@ GEM
     refills (0.1.0)
     render_anywhere (0.0.12)
       rails (>= 3.0.7)
+    rmagick (2.15.4)
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -427,6 +430,7 @@ DEPENDENCIES
   flutie
   fog
   formulaic
+  friendly_id (~> 5.1.0)
   high_voltage
   jquery-rails
   launchy
@@ -445,6 +449,7 @@ DEPENDENCIES
   recipient_interceptor
   refills
   render_anywhere
+  rmagick
   rspec-rails (~> 3.4.0)
   sass-rails (~> 5.0)
   shoulda-matchers

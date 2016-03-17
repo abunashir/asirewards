@@ -1,0 +1,37 @@
+<header
+  class="intro-block bg-color1 dark-bg fixed-bg"
+  style="background-image: url('<%= @destination.banner %>')"
+  >
+  <div class="container">
+    <div class="text-center">
+      <h2><%= @destination.name %></h2>
+    </div>
+  </div>
+</header>
+
+
+<section id="featured" class="bg-color3 asirewards-destinations">
+  <div class="container">
+    <div class="row">
+      <div class="certificates">
+        <ul>
+          <% @destination.certificates.each do |certificate| %>
+            <li> <%= certificate.name %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="description">
+        <%= @destination.content %>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="list_destinations">
+        <%= link_to(
+          "Book now", "#", class: "btn btn-lg btn-primary"
+        ) %> </div>
+    </div>
+
+  </div>
+</section>

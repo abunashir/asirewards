@@ -1,42 +1,49 @@
-<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+<header class="intro-block bg-color1 dark-bg fixed-bg destinations-hero">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-container">
-          <h3 class="title">Destinations</h3>
-
-          <%= render "flashes" %>
-
-          <div class="table-responsive">
-
-            <table class="table">
-              <tr>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Status</th>
-              </tr>
-
-              <% @destinations.each do |destination| %>
-                <tr>
-                  <td><%= destination.name %></td>
-                  <td><%= destination.location %></td>
-                  <td><%= destination.status %></td>
-                </tr>
-              <% end %>
-            </table>
-            <br />
-
-            <% if current_user.management_admin? %>
-              <%= link_to(
-                "Add new destination",
-                new_destination_path,
-                class: "btn btn-primary"
-              ) %>
-          <% end %>
-
-          </div>
-        </div>
-      </div>
+    <div class="text-center">
+      <h2>Destinations</h2>
     </div>
   </div>
 </header>
+
+<section id="featured" class="bg-color3 asirewards-destinations">
+  <div class="container">
+    <div class="row">
+      <% @destinations.each do |destination| %>
+        <div class="col-sm-4 destination">
+          <div class="post">
+            <div class="post-media">
+              <%= link_to(
+                image_tag(destination.banner.thumb, class: "img-responsive"),
+                destination_path(destination)
+              ) %> </div>
+
+            <div class="post-content">
+              <h4 class="title">
+                <strong>
+                  <%= truncate(destination.name, length: 25) %>
+                </strong>
+              </h4>
+              <div class="post-desc">
+                <%= truncate(destination.content, length: 250) %>
+                <%= link_to "more", destination_path(destination) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <% if signed_in? && current_user.management_admin? %>
+      <div class="row text-center">
+        <div class="list_destinations">
+          <%= link_to(
+            "Add new destination",
+            new_destination_path,
+            class: "btn btn-lg btn-primary"
+          ) %> </div>
+      </div>
+    <% end %>
+
+  </div>
+</section>

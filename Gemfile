@@ -25,6 +25,8 @@ gem "pdfkit"
 gem "render_anywhere", require: false
 gem "bootstrap-sass", "~> 3.3.6"
 gem "country_select"
+gem "friendly_id", "~> 5.1.0"
+gem "rmagick"
 
 group :development do
   gem "quiet_assets"

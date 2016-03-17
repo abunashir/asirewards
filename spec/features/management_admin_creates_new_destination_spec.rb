@@ -21,7 +21,6 @@ feature "Destination creation" do
     click_on "Create"
 
     expect(page).to have_content(destination.name)
-    expect(page).to have_content(destination.location)
-    expect(page).to have_content("Active")
+    expect(page).to have_content(destination.content)
   end
 end
