@@ -1,0 +1,21 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="form-container">
+          <h3 class="title">Password Reset</h3>
+
+          <%= render "flashes" %>
+
+          <%= simple_form_for :password, url: passwords_path do |f| %>
+            <%= f.input :email, placeholder: "Enter your email address" %>
+
+            <br />
+            <%= f.submit "Submit", class: "btn btn-primary btn-lg btn-block" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
