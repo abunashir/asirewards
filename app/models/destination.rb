@@ -17,6 +17,10 @@ class Destination < ActiveRecord::Base
     order(created_at: :desc).limit(limit_to)
   end
 
+  def self.featured(limit_to = 10)
+    where(featured: true).order(updated_at: :desc).limit(limit_to)
+  end
+
   private
 
   def slug_candidates

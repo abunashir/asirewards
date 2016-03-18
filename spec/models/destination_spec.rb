@@ -19,6 +19,18 @@ describe Destination do
     end
   end
 
+  describe ".featured" do
+    it "returns the latest updated featured destinations" do
+      destination_one = create(:destination, featured: true)
+      _destination_two = create(:destination, featured: false)
+      destination_three = create(:destination, featured: true)
+
+      expect(
+        Destination.featured.map(&:id)
+      ).to eq([destination_three, destination_one].map(&:id))
+    end
+  end
+
   describe "#status" do
     it "returns status based on the active? status" do
       destination_one = create(:destination, active: true)

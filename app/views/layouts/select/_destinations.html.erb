@@ -4,129 +4,30 @@
       <h2 class="title">Featured Destinations</h2>
     </div>
     <div class="row sep-bottom">
-      <div class="col-sm-4">
-        <div class="post">
-          <div class="post-media">
-            <%= link_to(
-              image_tag("featured-dest-1.jpg", class: "img-responsive"), "#"
-            ) %>
-        </div>
+      <% featured_destinations.each do |destination| %>
+        <div class="col-sm-4 destination">
+          <div class="post">
+            <div class="post-media">
+              <%= link_to(
+                image_tag(destination.banner.thumb, class: "img-responsive"),
+                destination_path(destination)
+              ) %> </div>
 
-        <div class="post-content">
-          <h4 class="title"><strong>Acapulco</strong></h4>
-          <div class="post-desc">
-            Don't skip your siesta in Acapulco, because you'll need the sleep:
-            you'll be busy dancing from midnight until the sun comes up.
-            Countless nightclubs keep the evenings hopping
+            <div class="post-content">
+              <h4 class="title">
+                <strong>
+                  <%= truncate(destination.name, length: 25) %>
+                </strong>
+              </h4>
 
-            <a href="#"> ... more</a>
+              <div class="post-desc">
+                <%= truncate(destination.content, length: 180) %>
+                <%= link_to "more", destination_path(destination) %>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="post">
-          <div class="post-media">
-            <%= link_to(
-              image_tag("featured-dest-2.jpg", class: "img-responsive"), "#"
-            ) %>
-        </div>
-
-        <div class="post-content">
-          <h4 class="title"><strong>Cabo San Lucas</strong></h4>
-          <div class="post-desc">
-            Cabo has been rated as one of Mexico's top 5 tourist destinations
-            it is known for its beaches, scuba diving locations, balnearios,
-            the sea arch El Arco de Cabo San Lucas, and marine life.
-
-            <a href="#"> ... more</a>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="post">
-          <div class="post-media">
-            <%= link_to(
-              image_tag("featured-dest-3.jpg", class: "img-responsive"), "#"
-            ) %>
-
-        </div>
-        <div class="post-content">
-          <h4 class="title"><strong>Puerto Vallarta</strong></h4>
-          <div class="post-desc">
-            Puerto Vallarta is a Mexican beach resort city situated on the
-            Pacific Ocean's Bahía de Banderas. Puerto Vallarta is also a highly
-            popular vacation spot for domestic and international tourists
-
-            <a href="#"> ... more</a>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="post">
-          <div class="post-media">
-            <%= link_to(
-              image_tag("featured-dest-4.jpg", class: "img-responsive"), "#"
-            ) %>
-        </div>
-        <div class="post-content">
-          <h4 class="title"><strong>Mazatlan</strong></h4>
-          <div class="post-desc">
-            It's a historic capital. It's a beach resort. It's a lively,
-            romantic town. Whatever you look for in a Mexican vacation is on
-            the menu in Mazatlan. Returning travelers rave about the
-
-            <a href="#"> ... more</a>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="post">
-          <div class="post-media">
-            <%= link_to(
-              image_tag("featured-dest-5.jpg", class: "img-responsive"), "#"
-            ) %>
-
-        </div>
-        <div class="post-content">
-          <h4 class="title"><strong>Cancun</strong></h4>
-          <div class="post-desc">
-            Sunny Cancun has much more to offer than its party-town reputation
-            might suggest. Plenty of gorgeous, drama-free family resorts cater
-            to folks who want to experience the tropical Yucatan climate
-
-            <a href="#"> ... more</a>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="post">
-          <div class="post-media">
-            <%= link_to(
-              image_tag("featured-dest-6.jpg", class: "img-responsive"), "#"
-            ) %>
-
-        </div>
-        <div class="post-content">
-          <h4 class="title"><strong>Puerto Peñasco</strong></h4>
-          <div class="post-desc">
-            Puerto Peñasco draws visitors for its fine beaches, water sports,
-            fishing, and desert-by-the sea beauty. Calm, warm water conditions
-            are ideal for swimming and boating.
-
-            <a href="#"> ... more</a>
-          </div>
-        </div>
-        </div>
-      </div>
+      <% end %>
     </div>
 
     <div class="row text-center">
