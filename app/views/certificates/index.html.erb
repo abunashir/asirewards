@@ -10,7 +10,7 @@
           <div class="table-responsive">
             <table class="certificates table">
               <tr>
-                <th>Title</th>
+                <th>Name</th>
                 <th>Status</th>
                 <th>Available Kits</th>
                 <th>Actions</th>
@@ -24,20 +24,23 @@
 
                   <td>
                     <%= link_to(
-                      "Destinations", certificate_destinations_path(certificate)
+                      "Send kit", certificate_kits_path(certificate) 
                     ) %>
-                    <%= link_to "Send kit", certificate_kits_path(certificate) %>
-                    <%= link_to(
-                      "Preview", certificate_path(certificate), target: "_blank"
-                    ) %>
+
+                  <%= link_to(
+                    "Preview", certificate_path(certificate), target: "_blank"
+                  ) %>
+
+                <%= link_to(
+                  "Destinations", certificate_destinations_path(certificate)
+                ) %>
+
                 </td>
                 </tr>
               <% end %>
             </table>
 
-
             <br />
-
             <% if current_user.admin? %>
               <%= link_to(
                 "New Certificate",
@@ -52,4 +55,3 @@
     </div>
   </div>
 </header>
-

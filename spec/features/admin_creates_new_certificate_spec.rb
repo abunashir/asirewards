@@ -13,6 +13,7 @@ feature "Certificate creation" do
     )
 
     fill_in "certificate_name", with: "Mexico tour 2015"
+    fill_in "certificate_code_prefix", with: "BMM"
     fill_in "certificate_price", with: 19.99
     fill_in "certificate_expires_in", with: 12
     fill_in "certificate_duration", with: 7

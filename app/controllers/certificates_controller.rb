@@ -19,10 +19,7 @@ class CertificatesController < ApplicationController
     @certificate = certificates.new(certificate_params)
 
     if @certificate.save
-      redirect_to(
-        certificate_content_path(@certificate),
-        notice: I18n.t("cert.create.success")
-      )
+      redirect_to certificate_content_path(@certificate)
     else
       render :new
     end
@@ -36,7 +33,8 @@ class CertificatesController < ApplicationController
 
   def certificate_params
     params.require(:certificate).permit(
-      :name, :price, :expires_in, :duration, contents_attributes: [:banner]
+      :name, :code_prefix, :price, :expires_in, :duration,
+      contents_attributes: [:banner]
     )
   end
 end

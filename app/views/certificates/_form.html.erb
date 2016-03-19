@@ -1,6 +1,7 @@
 <%= simple_form_for @certificate,
   html: { class: "form-horizontal" } do |f| %>
-  <%= f.input :name, placeholder: "Title *" %>
+  <%= f.input :name, placeholder: "Name *" %>
+  <%= f.input :code_prefix, placeholder: "Code Prefix (In Uppercase)" %>
 
   <%= f.simple_fields_for :contents do |content_form| %>
     <%= content_form.input(

@@ -23,11 +23,6 @@ en:
       success: "Congratulations, your account has been created successfully."
 
   cert:
-    create:
-      success:
-        "New certificated has been added and one of the admin will
-        approve it soon"
-
     activation:
       success:
         "Your certificate has been activated"
@@ -56,32 +51,28 @@ en:
   certificate:
     content:
       create:
-        ready: "Your certificate has been submitted for admin approval"
+        ready: "Your certificate has been submitted for approval"
 
       title:
-        "<h2>Click on the left blue icon to start editing, then click to this section to put your certificate header, Example: 5 Nights in a Luxery Resort!</h2>"
+        "<h2>Time to edit your certificate, your header goes here!</h2>"
 
       sub_title:
-        "<p>Enter certificate description here, why not describing how it makes your certificate the best compared to the average certificate providers. You are not limited to words but keeping under 250 makes it more attractive.</p>"
+        "<p>Click on the blue pencil icon in the top left part of the screen to start editing. Then click on this section to enter your certificate header, for example: 5 Nights in a Luxury Resort!, then click on the other sections below to edit them.
+
+          Enter certificate description here, this section would typically include the highlight of why customers should choose this certificate, what is included etc. You are not limited to words, but we suggest keeping it between 50 to 100 words to makes it look more attractive.</p>"
 
       terms:
         "<p class=\"strong\">Terms & Conditions</p>
-        <p>Enter the details terms and conditions reagarding this certificate, let's make sure you touch all basic points so we can use this if any customer is complaing about any of of the existing terms </p>
+        <p>Here you should enter the details terms and conditions that apply to this certificate. Make sure you touch all aspects of usage so that it is clear to the customer what they are signing up for when accepting your offer. These terms will be used if there is a complaint from a customer.
+        </p>
 
         <ol>
-        <li>This is the poing one for your terms and condtions, simple edit one and then click enter should give you the second options to add another</li>
-        </ol>
-
-        <p>Once done then let's move the next one, certificate polices. Oh, don't worry the certificate code section, our system will automatically put the certificate code there.</p>"
+        <li>This is the first point of your terms and conditions, enter the text here, then hit enter to start point two and continue until you have listed them all.</li>
+        </ol>"
 
       policies:
         "<p class=\"strong\">Policies</p>
-        <p>Enter your policies reagarding this certificate, let's make sure you touch
-        all basic points so we can use this as reference if there is any legal issue</p>
-
-        <ul>
-        <li>This is the poing one for your terms and condtions, simple edit one and then click enter should give you the second options to add another</li>
-        </ul>"
+        <p>Here you can enter general policies about privacy, how you will use the customers data etc. Many companies also use this space to enter any legal restrictions or notes to the user of the promotion.</p>"
 
   destination:
     create:
