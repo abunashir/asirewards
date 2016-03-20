@@ -35,8 +35,8 @@ en:
         "This email has already received a certificate from the system, we will
         use the existing name when sending this certificate, as it has already
         been entered by the client."
-      success: ""
-      errors: ""
+      success: "Your certificate has been sent to the user with an activaiton email"
+      errors: "Please provide valid Name and Email to sent the certificate"
 
     available:
       none:
