@@ -6,11 +6,16 @@ class Destination < ActiveRecord::Base
   validates :location, presence: true
   validates :country, presence: true
   has_and_belongs_to_many :certificates
+  has_many :bookings
 
   mount_uploader :banner, BannerUploader
 
   def status
     active? ? "Active" : "Pending"
+  end
+
+  def requestable?(kit_certificate)
+    certificates.include?(kit_certificate) || false
   end
 
   def self.recent(limit_to = 100)

@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   resources :activations
   resource :marketer
   resources :staffs
-  resources :destinations
+  resources :destinations do
+    resources :bookings
+  end
 end

@@ -50,6 +50,10 @@ class Kit < ActiveRecord::Base
     order(created_at: :desc).limit(total)
   end
 
+  def self.activated
+    used.where.not(activated_on: nil)
+  end
+
   def self.available?
     available_kit.present?
   end

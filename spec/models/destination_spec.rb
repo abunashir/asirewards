@@ -40,4 +40,16 @@ describe Destination do
       expect(destination_two.status).to eq("Pending")
     end
   end
+
+  describe "#requestable?" do
+    it "returns the requestable status for a specific certificate" do
+      certificate = create(:certificate)
+      destination_one = create(:destination)
+      destination_two = create(:destination)
+      certificate.destinations << destination_one
+
+      expect(destination_one.requestable?(certificate)).to eq(true)
+      expect(destination_two.requestable?(certificate)).to eq(false)
+    end
+  end
 end

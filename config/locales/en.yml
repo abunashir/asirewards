@@ -83,3 +83,7 @@ en:
     create:
       success: "Selected destinations has been added to this certificate"
       errors: "Please fix the following errors before adding those destination"
+
+  booking:
+    create:
+      success: "Thank you, we've received your booking request."

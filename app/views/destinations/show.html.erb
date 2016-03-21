@@ -29,7 +29,9 @@
     <div class="row text-center">
       <div class="list_destinations">
         <%= link_to(
-          "Book now", "#", class: "btn btn-lg btn-primary"
+          "Book now",
+          new_destination_booking_path(@destination),
+          class: "btn btn-lg btn-primary"
         ) %> </div>
     </div>
 

@@ -1,0 +1,23 @@
+<p>Hey <%= @staff.name %>,</p>
+
+<p>A new booking request has been received through the ASI Rewards site, please process the request below as soon as possible. </p>
+
+<% customer = @booking.user %>
+<p>
+Name: <%= customer.name %><br />
+Destination: <%= @booking.destination.name %><br />
+Check In: <%= @booking.check_in.to_s(:long) %><br />
+Night: <%= @booking.kit.certificate.duration %> Nigths<br />
+Adults: <%= @booking.adults %><br />
+Children: <%= @booking.children %><br />
+Cert/Kit Code: <%= @booking.kit.code %><br />
+Email: <%= customer.email %><br />
+Contact: <%= @booking.contact %><br />
+Other contact: <%= customer.phone %><br />
+Special request: <%= @booking.note %>
+</p>
+
+<p>
+Thanks,<br />
+ASI Rewards Website.
+</p>

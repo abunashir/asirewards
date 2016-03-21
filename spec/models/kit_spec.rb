@@ -63,6 +63,16 @@ describe Kit do
     end
   end
 
+  describe ".activated" do
+    it "scoped the kit to activated only" do
+      kit_one = create(:kit, used: true, activated_on: 1.days.ago)
+      _kit_two = create(:kit)
+      kit_three = create(:kit, used: true, activated_on: Time.now)
+
+      expect(Kit.activated.map(&:id)).to eq([kit_one, kit_three].map(&:id))
+    end
+  end
+
   describe "#mark_used!" do
     it "marks the kit as used" do
       kit = create(:kit, used: false)

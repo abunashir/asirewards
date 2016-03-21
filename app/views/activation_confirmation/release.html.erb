@@ -1,6 +1,9 @@
 <p>Dear <%= @certificate_kit.user.name %>,</p>
 
-<p>Thank you for activating your certificate.</p>
+<p>
+Thank you for activating your certificate,
+your activation code is <%= @certificate_kit.code.upcase %>
+</p>
 
 <p>
 You now have 12 months to submit your booking request, and thereafter another
@@ -117,5 +120,5 @@ venture partnership or other joint venture and ASI Rewards has no authority to
 act on behalf of the Hotel and /or The Resort or to bind them in anyway other
 than providing the accommodations. ASI Rewards is solely responsible for the
 content and fulfilment of the services comprised within this certificate and
-the asorewards.io website.
+the <%= link_to "www.asirewards.io", root_url %>  website.
 </p>

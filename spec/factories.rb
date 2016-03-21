@@ -1,4 +1,15 @@
 FactoryGirl.define do
+  factory :booking do
+    association :destination
+    association :kit
+    check_in "2016-03-21"
+    adults 2
+    children 0
+    contact "+1888123123"
+    note ""
+    confirmation_code "ABCD1234"
+  end
+
   factory :destination do
     name "Raddission Blue"
     banner "image"
