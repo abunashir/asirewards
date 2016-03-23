@@ -40,6 +40,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     afm (0.2.2)
+    airbrake (5.2.1)
+      airbrake-ruby (~> 1.2)
+    airbrake-ruby (1.2.1)
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -413,6 +416,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   autoprefixer-rails
   awesome_print
   bootstrap-sass (~> 3.3.6)
