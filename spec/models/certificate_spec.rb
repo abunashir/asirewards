@@ -37,4 +37,18 @@ RSpec.describe Certificate, type: :model do
       expect(certificate.number_of_available_kits).to eq(1)
     end
   end
+
+  describe "#send_certificate" do
+    include ActiveJob::TestHelper
+
+    it "creates and send a new certificate" do
+      user = create(:user)
+      certificate = create(:certificate)
+      certificate.send_certificate(user: user)
+
+      expect(enqueued_jobs.size).to eq(1)
+      expect(user.kits.last.certificate).to eq(certificate)
+      expect(user.kits.last.status).to eq("Pending")
+    end
+  end
 end

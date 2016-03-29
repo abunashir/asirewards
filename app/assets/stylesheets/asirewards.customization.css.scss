@@ -3,6 +3,11 @@
   padding-top: 120px;
 }
 
+.purchase_page{
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
 .destinations-hero{
   background-image: asset-url("destinations-hero.jpg");
 
@@ -113,4 +118,21 @@ section#featured{
 
 .text-blue{
   color: #00c0ff;
+}
+
+.pricing_bg{
+  background-image: asset-url("pack-bg.png");
+}
+
+.pricing-table{
+  h4{
+    font-size: 30px;
+  }
+}
+
+.purchase_cert{
+  p.strong{
+    margin-top: 20px;
+    font-weight: bold;
+  }
 }

@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   resources :destinations do
     resources :bookings
   end
+
+  resources :purchases do
+    resource :complete
+  end
 end

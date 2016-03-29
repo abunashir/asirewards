@@ -6,6 +6,7 @@ class Certificate < ActiveRecord::Base
   has_many :kits, dependent: :destroy
   has_many :contents, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :purchases, dependent: :destroy
   has_and_belongs_to_many :destinations
 
   accepts_nested_attributes_for :contents
@@ -38,5 +39,11 @@ class Certificate < ActiveRecord::Base
 
   def content
     contents.last
+  end
+
+  def send_certificate(user:)
+    kit = kits.generate
+    kit.user = user
+    kit.send_certificate
   end
 end

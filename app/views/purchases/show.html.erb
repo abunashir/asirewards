@@ -1,3 +1,5 @@
+<% certificate = @purchase.certificate %>
+
 <header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero">
   <div class="container">
 
@@ -5,7 +7,7 @@
       <div class="col-md-6 dark-bg">
         <div class="slogan">
           <h1>
-            Activate<br>
+            Purchase<br>
             <strong>
               Your Certificate
             </strong>
@@ -16,24 +18,22 @@
           <li>
             <i class="num-icon">1</i>
             <p>
-            Start by activating here. Once your certificate is activated you
-            will receive your booking code by email.
+            Enter your name and contact details here, you will then be directed to our payment gateway with PayPal
             </p>
           </li>
 
           <li>
             <i class="num-icon">2</i>
             <p>
-            Then come back, within 12 months to select your destination and
-            submit your booking request.
+            Make your payment using your existing PayPal account, or by your
+            credit or debit card.
             </p>
           </li>
 
           <li>
             <i class="num-icon">3</i>
             <p>
-            When we have confirmed availability for the dates you have requested,
-            pay the admin and booking fee, and you are ready to go.
+            Once payment has been completed you will receive your certificate and activation code by email. Follow instructions to activate and book.
             </p>
           </li>
         </ul>
@@ -41,12 +41,14 @@
 
       <div class="col-md-5 col-md-offset-1">
         <div class="form-container">
-          <h3 class="title">Certificate Activation</h3>
+          <h3 class="title">Enter Your Details</h3>
 
           <%= render "flashes" %>
 
-          <%= simple_form_for @activation,
-            html: {class: "form-horizontal"} do |f| %>
+          <%= simple_form_for @purchase,
+            url: purchase_path(certificate),
+            method: :patch, html: { class: "form-horizontal" } do |f| %>
+
             <%= f.simple_fields_for :user do |user_form| %>
               <%= user_form.input :name_part_one, placeholder: "First Name *" %>
               <%= user_form.input :name_part_two, placeholder: "Last Name *" %>
@@ -54,16 +56,9 @@
               <%= user_form.input :phone, placeholder: "Phone Number *" %>
             <% end %>
 
-            <%= f.input :activation_code, placeholder: "Activation Code *" %>
-
             <br />
-            <%= f.submit "Activate", class: "btn btn-lg btn-block btn-primary" %>
+            <%= f.submit "Buy Now", class: "btn btn-lg btn-block btn-primary"  %>
           <% end %>
-
-          <p>
-          Don’t have a certificate?
-          <%= link_to "Buy one now", purchases_path, class: "text-blue" %>.
-          </p>
 
         </div>
       </div>
@@ -71,5 +66,21 @@
   </div>
 </header>
 
-<%= render "layouts/select/destinations" %>
-<%= render "layouts/select/contact" %>
+<section id="featured" class="bg-color3 asirewards-destinations purchase_cert">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="title"><%= certificate.name %></h2>
+    </div>
+
+    <div class="row">
+      <%= raw(certificate.sub_title) %>
+    </div>
+
+    <div class="row">
+      <%= raw(certificate.terms) %>
+    </div>
+
+    <div class="row">
+      <%= raw(certificate.policies) %>
+    </div>
+</section>

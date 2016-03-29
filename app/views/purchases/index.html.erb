@@ -1,0 +1,99 @@
+<!-- INTRO CENTER -->
+<header id="intro-center" class="intro-block bg-color1 dark-bg fixed-bg double-padding text-center asirewards-hero purchase_page">
+  <div class="container">
+    <div class="slogan">
+      <h1>Take a step towards an</h1>
+      <h2 class="giant-title"><strong>Amazing Holiday</strong></h2>
+    </div>
+    <a class="goto" href="#"><i class="icon big-icon icon-arrow-down"></i></a>
+  </div>
+</header>
+
+
+
+<!-- PRICING TABLE 4COL BLOCK -->
+<section id="price-3col" class="bg-color3 text-center">
+  <div class="container">
+    <h2 class="title">Choose your certificate</h2>
+    <p class="sep-bottom editContent">
+    Our partners offer great holiday escapes. Select your certificate and choose from our destinations. Stays start at $ 21.28 USD per person per night!
+    </p>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="pricing-table">
+          <h4 class="bg-color1 dark-bg">ASI Americas</h4>
+          <span class="dark-bg cover-bg pricing_bg">$30</span>
+
+          <ul class="benefits-list">
+            <li><strong>Destinations</strong> in</li>
+            <li>Mexico</li>
+            <li>Caribbean</li>
+            <li>Jamaica</li>
+            <li><del>The Bahamas</del></li>
+            <li><del>Europe</del></li>
+            <li><del>Asia</li></li>
+            <li><del>Support the Charity</del></li>
+          </ul>
+
+          <%= link_to(
+            "Select",
+            purchase_path("asi-americas"),
+            class: "btn btn-primary"
+          ) %>
+      </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="pricing-table">
+          <div class="stamp editContent">
+            <i class="icon icon-badge"></i>Popular
+          </div>
+
+          <h4 class="bg-color1 dark-bg">ASI Charity</h4>
+          <span class="dark-bg cover-bg pricing_bg">$55</span>
+
+          <ul class="benefits-list">
+            <li><strong>Destinations</strong> in</li>
+            <li>Mexico</li>
+            <li>Caribbean</li>
+            <li>Jamaica</li>
+            <li>The Bahamas</li>
+            <li>Europe</li>
+            <li>Asia</li>
+            <li>Support the Charity</li>
+          </ul>
+
+          <%= link_to(
+            "Select",
+            purchase_path("asi-charity"),
+            class: "btn btn-primary"
+          ) %>
+      </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="pricing-table">
+          <h4 class="bg-color1 dark-bg">ASI Worldwide</h4>
+          <span class="dark-bg cover-bg pricing_bg">$45</span>
+
+          <ul class="benefits-list">
+            <li><strong>Destination</strong> In</li>
+            <li>Mexico</li>
+            <li>Caribbean</li>
+            <li>Jamaica</li>
+            <li>The Bahamas</li>
+            <li>Europe</li>
+            <li>Asia</li>
+            <li><del>Support the Charity</del></li>
+          </ul>
+
+          <%= link_to(
+            "Select",
+            purchase_path("asi-worldwide"),
+            class: "btn btn-primary"
+          ) %>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>

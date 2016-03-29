@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :purchase do
+    association :user
+    association :certificate
+    payment_id "PAY-7KV41762LX957861GK3LMH6A"
+  end
+
   factory :booking do
     association :destination
     association :kit
