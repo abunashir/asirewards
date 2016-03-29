@@ -18,7 +18,7 @@ class KitsController < ApplicationController
   private
 
   def certificate
-    @certificate ||= Certificate.find(params[:certificate_id])
+    @certificate ||= Certificate.friendly.find(params[:certificate_id])
   end
 
   def save_certificate_kit

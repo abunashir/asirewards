@@ -30,7 +30,7 @@ class CertificateDestinationsController < ApplicationController
   private
 
   def certificate
-    @certificate = Certificate.find(params[:certificate_id])
+    @certificate = Certificate.friendly.find(params[:certificate_id])
   end
 
   def certificate_destination_params

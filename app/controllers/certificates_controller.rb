@@ -6,7 +6,7 @@ class CertificatesController < ApplicationController
   end
 
   def show
-    @certificate = certificates.find(params[:id])
+    @certificate = certificates.friendly.find(params[:id])
     render layout: "certificate"
   end
 

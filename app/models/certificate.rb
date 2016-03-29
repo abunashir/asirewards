@@ -1,4 +1,7 @@
 class Certificate < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   belongs_to :company
   has_many :kits, dependent: :destroy
   has_many :contents, dependent: :destroy
