@@ -8,20 +8,13 @@ class Kit < ActiveRecord::Base
 
   def send_certificate
     if save
+      deliver_certificate
       mark_used!
     end
   end
 
-  def deliver_certificate
-    CertificateSender.release(self.id).deliver_later
-  end
-
   def activation_code
     [certificate.code_prefix, code].compact.join.upcase
-  end
-
-  def mark_used!
-    update_attributes! used: true
   end
 
   def status
@@ -64,5 +57,15 @@ class Kit < ActiveRecord::Base
 
   def self.generate
     create!(code: KitGenerator.new(length: 7).code)
+  end
+
+  private
+
+  def mark_used!
+    update_attributes! used: true
+  end
+
+  def deliver_certificate
+    CertificateSender.release(self.id).deliver_later
   end
 end

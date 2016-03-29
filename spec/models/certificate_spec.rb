@@ -22,7 +22,7 @@ RSpec.describe Certificate, type: :model do
     it "returns the random available kit" do
       certificate = create(:certificate)
       certificate.create_kit(number: 2)
-      certificate.kits.first.mark_used!
+      certificate.kits.first.update! used: true
 
       expect(certificate.available_kit).to eq(certificate.kits.last)
     end
@@ -32,7 +32,7 @@ RSpec.describe Certificate, type: :model do
     it "returns the number of unused kits" do
       certificate = create(:certificate)
       certificate.create_kit(number: 2)
-      certificate.kits.first.mark_used!
+      certificate.kits.first.update! used: true
 
       expect(certificate.number_of_available_kits).to eq(1)
     end

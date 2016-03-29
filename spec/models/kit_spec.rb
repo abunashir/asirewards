@@ -73,21 +73,26 @@ describe Kit do
     end
   end
 
-  describe "#mark_used!" do
-    it "marks the kit as used" do
-      kit = create(:kit, used: false)
-      kit.mark_used!
-
-      expect(kit.used?).to eq(true)
-    end
-  end
-
   describe "#send_certificate" do
+    include ActiveJob::TestHelper
+
     it "mark the kit as used" do
       pending_kit = create(:kit, used: true)
 
       expect(pending_kit.send_certificate).to eq(true)
       expect(pending_kit.reload.used?).to eq(true)
+    end
+
+    it "sends the certificate" do
+      certificate = create(:certificate)
+      user = create(:user)
+      kit = create(:kit, certificate: certificate, user: user)
+      kit.send_certificate
+
+      expect(enqueued_jobs.size).to eq(1)
+      expect(enqueued_jobs.last[:job]).to eq(ActionMailer::DeliveryJob)
+      expect(enqueued_jobs.last[:args].first).to eq("CertificateSender")
+      expect(enqueued_jobs.last[:args].last).to eq(kit.id)
     end
   end
 
@@ -100,22 +105,6 @@ describe Kit do
       expect(unused_kit.status).to eq("Ready")
       expect(pending_kit.status).to eq("Pending")
       expect(active_kit.status).to eq("Activated")
-    end
-  end
-
-  describe "#deliver_certificate" do
-    include ActiveJob::TestHelper
-
-    it "enque the certificate sending job" do
-      certificate = create(:certificate)
-      user = create(:user)
-      kit = create(:kit, certificate: certificate, user: user)
-      kit.deliver_certificate
-
-      expect(enqueued_jobs.size).to eq(1)
-      expect(enqueued_jobs.last[:job]).to eq(ActionMailer::DeliveryJob)
-      expect(enqueued_jobs.last[:args].first).to eq("CertificateSender")
-      expect(enqueued_jobs.last[:args].last).to eq(kit.id)
     end
   end
 

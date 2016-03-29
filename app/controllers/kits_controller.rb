@@ -25,8 +25,6 @@ class KitsController < ApplicationController
     set_certificate_kit_attributes
 
     if @kit.send_certificate
-      @kit.deliver_certificate
-
       redirect_to(
         certificate_kits_path(certificate), notice: I18n.t("kit.create.success")
       )

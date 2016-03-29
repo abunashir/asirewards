@@ -9,7 +9,7 @@ feature "Downloading certificate" do
     certificate.create_kit(number: 5)
     certificate_kit = certificate.available_kit
     customer.kits << certificate_kit
-    certificate_kit.mark_used!
+    certificate_kit.update! used: true
 
     visit root_path(as: staff)
     click_on "Certificates"
