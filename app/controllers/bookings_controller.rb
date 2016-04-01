@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   def create
     @booking = destination.bookings.new(booking_params)
 
-    if @booking.confirmed
+    if @booking.confirm
       @booking.deliver_confirmation
       redirect_to root_path, notice: I18n.t("booking.create.success")
     else

@@ -11,7 +11,7 @@ class Booking < ActiveRecord::Base
 
   delegate :user, to: :kit, allow_nil: true
 
-  def confirmed
+  def confirm
     if valid? && requestable?
       save
     end
@@ -29,6 +29,13 @@ class Booking < ActiveRecord::Base
   end
 
   def requestable?
-    destination && destination.requestable?(find_confirmed_kit.certificate)
+    requestable = destination &&
+      destination.requestable?(find_confirmed_kit.certificate)
+
+    if !requestable
+      errors.add(:confirmation_code, "not valid for this destination")
+    end
+
+    requestable
   end
 end

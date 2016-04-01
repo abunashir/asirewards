@@ -9,27 +9,32 @@ describe Booking do
     it { should validate_presence_of :contact }
   end
 
-  describe "#confirmed" do
+  describe "#confirm" do
     it "books the requestable destination" do
-      customer = create(:user)
-      certificate = create(:certificate)
-      destination = create(:destination)
-      certificate.destinations << destination
-
-      certificate.create_kit(number: 1)
-      certificate_kit = certificate.available_kit
-      certificate_kit.update(
-        used: true, user: customer, activated_on: Time.now
-      )
-
+      customer, certificate, destination = create_cert_customer_and_destination
+      certificate.certificate.destinations << destination
       booking = build(
-        :booking, confirmation_code: certificate_kit.code, destination: destination
+        :booking, confirmation_code: certificate.code, destination: destination
       )
 
-      booking.confirmed
+      booking.confirm
 
-      expect(booking.reload.kit).to eq(certificate_kit)
+      expect(booking.reload.kit).to eq(certificate)
       expect(booking.user).to eq(customer)
+    end
+
+    it "adds invalid destination error when destination is not requestable" do
+      _customer, certificate, destination = create_cert_customer_and_destination
+      booking = build(
+        :booking, confirmation_code: certificate.code, destination: destination
+      )
+
+      booking.confirm
+
+      expect(
+        booking.errors.messages[:confirmation_code]
+
+      ).to include("not valid for this destination")
     end
   end
 
@@ -45,5 +50,21 @@ describe Booking do
       expect(enqueued_jobs.last[:args].first).to eq("BookingConfirmation")
       expect(enqueued_jobs.last[:args].last).to eq(booking.id)
     end
+  end
+
+  private
+
+  def create_cert_customer_and_destination
+    customer = create(:user)
+    certificate = create(:certificate)
+    destination = create(:destination)
+    certificate.create_kit(number: 1)
+    certificate_kit = certificate.available_kit
+
+    certificate_kit.update(
+      used: true, user: customer, activated_on: Time.now
+    )
+
+    [customer, certificate_kit, destination]
   end
 end
