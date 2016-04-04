@@ -18,5 +18,17 @@ describe User do
       expect(user.name).to eq("Keith Thomson")
     end
   end
+
+  describe "#staff" do
+    it "returns true for both admin or staff" do
+      admin = create(:user, admin: true)
+      user = create(:user, role: "staff")
+      customer = create(:user, role: "customer")
+
+      expect(admin.staff?).to eq(true)
+      expect(user.staff?).to eq(true)
+      expect(customer.staff?).to eq(false)
+    end
+  end
 end
 

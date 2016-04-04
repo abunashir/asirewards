@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     admin? && company.try(:owner?)
   end
 
+  def staff?
+    admin? || (role == "staff")
+  end
+
   private
 
   def password_optional?
