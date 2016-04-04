@@ -22,7 +22,8 @@ class Purchase < ActiveRecord::Base
     payment.links.find{|v| v.method == "REDIRECT" }.href
   end
 
-  def deliver_certificate
+  def finalize_purchase
+    update paid: true
     certificate.send_certificate(user: user)
   end
 

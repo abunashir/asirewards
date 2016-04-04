@@ -33,13 +33,22 @@ describe Purchase do
     end
   end
 
-  describe "#deliver_certificate" do
-    it "add new certificate kit" do
+  describe "#finalize_purchase" do
+    it "mark the purchase as paid" do
       customer = create(:user)
       certificate = create(:certificate)
       purchase = create(:purchase, user: customer, certificate: certificate)
 
-      purchase.deliver_certificate
+      purchase.finalize_purchase
+      expect(purchase.paid?).to eq(true)
+    end
+
+    it "send out the certfiicate" do
+      customer = create(:user)
+      certificate = create(:certificate)
+      purchase = create(:purchase, user: customer, certificate: certificate)
+
+      purchase.finalize_purchase
       expect(customer.reload.kits.count).to eq(1)
     end
   end

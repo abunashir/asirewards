@@ -1,12 +1,15 @@
 class CompletesController < ApplicationController
   def show
-    purchase = Purchase.find(session[:purchase_id])
+    @purchase = Purchase.find(session[:purchase_id])
+    execute_payment || redirect_to(purchases_url)
+  end
 
-    if purchase.execute_payment(params[:PayerID])
-      purchase.deliver_certificate
+  private
+
+  def execute_payment
+    if @purchase.execute_payment(params[:PayerID])
       session[:purchase_id] = nil
-    else
-      redirect_to purchases_url
+      @purchase.finalize_purchase
     end
   end
 end
