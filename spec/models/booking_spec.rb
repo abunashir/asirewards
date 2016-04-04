@@ -38,17 +38,24 @@ describe Booking do
     end
   end
 
-  describe "#deliver_confirmation" do
+  describe "#finalize_booking" do
     include ActiveJob::TestHelper
 
-    it "enque booking confirmation email" do
+    it "delivers the booking confirmation" do
       booking = create(:booking)
-      booking.deliver_confirmation
+      booking.finalize_booking
 
       expect(enqueued_jobs.size).to eq(2)
       expect(enqueued_jobs.last[:job]).to eq(ActionMailer::DeliveryJob)
       expect(enqueued_jobs.last[:args].first).to eq("BookingConfirmation")
       expect(enqueued_jobs.last[:args].last).to eq(booking.id)
+    end
+
+    it "mark the kit as booked" do
+      booking = create(:booking, kit: create(:kit, used: true))
+      booking.finalize_booking
+
+      expect(booking.kit.reload.booked?).to eq(true)
     end
   end
 

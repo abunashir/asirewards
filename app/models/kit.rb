@@ -31,6 +31,14 @@ class Kit < ActiveRecord::Base
     used? && activated_on.present?
   end
 
+  def booked?
+    used? && booked_on.present?
+  end
+
+  def mark_booked
+    touch :booked_on
+  end
+
   def self.used
     where(used: true)
   end

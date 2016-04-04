@@ -17,9 +17,9 @@ class Booking < ActiveRecord::Base
     end
   end
 
-  def deliver_confirmation
-    BookingConfirmation.confirmation(self.id).deliver_later
-    BookingConfirmation.new_request(self.id).deliver_later
+  def finalize_booking
+    deliver_confirmation
+    kit.mark_booked
   end
 
   private
@@ -37,5 +37,10 @@ class Booking < ActiveRecord::Base
     end
 
     requestable
+  end
+
+  def deliver_confirmation
+    BookingConfirmation.confirmation(self.id).deliver_later
+    BookingConfirmation.new_request(self.id).deliver_later
   end
 end

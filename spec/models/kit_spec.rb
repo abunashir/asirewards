@@ -116,4 +116,13 @@ describe Kit do
       expect(kit.activation_code).to eq("BMM12#{kit.code.upcase}")
     end
   end
+
+  describe "#mark_booked" do
+    it "sets the booking time on the kit" do
+      certificate_kit = create(:kit, used: true)
+      certificate_kit.mark_booked
+
+      expect(certificate_kit.reload.booked?).to eq(true)
+    end
+  end
 end
