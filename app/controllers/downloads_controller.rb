@@ -12,7 +12,7 @@ class DownloadsController < ApplicationController
   private
 
   def certificate
-    current_user.certificates.friendly.find(params[:certificate_id])
+    current_user.company_certificates.friendly.find(params[:certificate_id])
   end
 
   def certificate_kit

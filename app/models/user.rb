@@ -12,8 +12,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :name_part_one, :name_part_two, presence: true, allow_blank: true
 
-  delegate :staffs, to: :company, allow_nil: true, prefix: true
-  delegate :certificates, to: :company
+  delegate :staffs, :certificates, to: :company, allow_nil: true, prefix: true
 
   def management_admin?
     admin? && company.try(:owner?)

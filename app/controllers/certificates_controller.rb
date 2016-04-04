@@ -28,7 +28,7 @@ class CertificatesController < ApplicationController
   private
 
   def certificates
-    current_user.certificates
+    current_user.company_certificates
   end
 
   def certificate_params
