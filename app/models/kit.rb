@@ -52,7 +52,7 @@ class Kit < ActiveRecord::Base
   end
 
   def self.activated
-    used.where.not(activated_on: nil)
+    used.where(booked_on: nil).where.not(activated_on: nil)
   end
 
   def self.available?

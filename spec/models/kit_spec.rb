@@ -71,6 +71,15 @@ describe Kit do
 
       expect(Kit.activated.map(&:id)).to eq([kit_one, kit_three].map(&:id))
     end
+
+    it "exclude the booked certificate kit" do
+      kit_one = create(:kit, used: true, activated_on: 1.days.ago)
+      _kit_two = create(
+        :kit, used: true, booked_on: Time.now, activated_on: 1.days.ago
+      )
+
+      expect(Kit.activated.map(&:id)).to eq([kit_one.id])
+    end
   end
 
   describe "#send_certificate" do
