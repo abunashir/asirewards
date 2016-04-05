@@ -37,6 +37,7 @@
       <ul class="nav">
         <% if signed_in? && current_user.management_admin? %>
           <li><%= link_to "Certificates", admin_certificates_path %></li>
+          <li><%= link_to "Users", admin_users_path %></li>
           <li><%= link_to "Your Business", certificates_path  %></li>
         <% else %>
           <li> <%= link_to "Home", root_path %></li>

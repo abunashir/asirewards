@@ -3,6 +3,7 @@ require "rails_helper"
 feature "User editing" do
   scenario "management admin edit existing user" do
     visit root_path(as: create(:admin, company: create(:owner_company)))
+    click_on "Dashboard"
     click_on "Users"
     click_on "edit", match: :first
 

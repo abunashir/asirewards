@@ -1,5 +1,6 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :require_login
+  layout "application.admin"
 
   def index
     @users = User.staff
@@ -13,10 +14,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to users_path, notice: I18n.t("user.create.success")
+      redirect_to admin_users_path, notice: I18n.t("user.create.success")
     else
       flash.now[:error] = I18n.t("user.create.errors")
-      render :new
+      render :edit
     end
   end
 

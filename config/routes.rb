@@ -22,9 +22,8 @@ Rails.application.routes.draw do
     resource :complete
   end
 
-  resources :users
-
   namespace :admin do
     resources :certificates
+    resources :users
   end
 end
