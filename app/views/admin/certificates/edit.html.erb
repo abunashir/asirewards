@@ -1,0 +1,36 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">New Certificate</h3>
+
+          <%= render "flashes" %>
+
+          <%= simple_form_for @certificate,
+            url: admin_certificate_path(@certificate) do |f| %>
+
+            <%= f.input :name, placeholder: "Name *" %>
+            <%= f.input :code_prefix, placeholder: "Code Prefix (In Uppercase)" %>
+
+            <%= f.simple_fields_for :contents do |content_form| %>
+              <%= content_form.input(
+                :banner, as: :file, label: "Banner (Minimum width: 1000px)" ) %>
+            <% end %>
+
+            <%= f.input :price, placeholder: "Retails Price *" %>
+            <%= f.input :expires_in, placeholder: "Expiration in months *" %>
+            <%= f.input :duration, placeholder: "Duration in number of days *" %>
+
+            <br />
+            <%= f.submit(
+              "Update certificate", class: "btn btn-lg btn-block btn-primary" 
+            ) %>
+        <% end %>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

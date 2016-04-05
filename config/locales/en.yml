@@ -49,6 +49,10 @@ en:
       errors: "You need to provide the requried staff fields"
 
   certificate:
+    update:
+      success: "Your certificate has been updated"
+      errors: "Please fix the errors before updating the certificate."
+
     content:
       create:
         ready: "Your certificate has been submitted for approval"
