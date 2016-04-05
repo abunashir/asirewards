@@ -22,6 +22,20 @@ class User < ActiveRecord::Base
     admin? || (role == "staff")
   end
 
+  def account_type
+    if admin?
+      "Admin"
+    elsif staff?
+      "Staff"
+    else
+      "Customer"
+    end
+  end
+
+  def self.staff
+    select(&:staff?)
+  end
+
   private
 
   def password_optional?

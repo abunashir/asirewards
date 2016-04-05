@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :purchases do
     resource :complete
   end
+
+  resources :users
 end

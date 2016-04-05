@@ -87,3 +87,8 @@ en:
   booking:
     create:
       success: "Thank you, we've received your booking request."
+
+  user:
+    create:
+      success: "User information has been updated!"
+      errors: "Please provide valid user name, email and phone number."

@@ -63,6 +63,10 @@ FactoryGirl.define do
 
     factory :account, class: Account do
     end
+
+    factory :owner_company do
+      owner true
+    end
   end
 
   factory :user do

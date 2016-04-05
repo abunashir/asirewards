@@ -40,6 +40,7 @@
 
           <% if current_user.management_admin? %>
             <li><%= link_to "Destinations", destinations_path  %></li>
+            <li><%= link_to "Users", users_path %></li>
           <% end %>
 
           <% if current_user.admin? %>

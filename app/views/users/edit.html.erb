@@ -1,0 +1,25 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">Edit User</h3>
+
+          <%= render "flashes" %>
+
+          <%= simple_form_for @user, html: {class: "form-horizontal"} do |f| %>
+            <%= f.input :name, placeholder: "Name *" %>
+            <%= f.input :email, placeholder: "Email Address *" %>
+            <%= f.input :phone, placeholder: "Phone Number *" %>
+            <%= f.input :password, placeholder: "New Password" %>
+
+            <br />
+            <%= f.submit "Update", class: "btn btn-lg btn-block btn-primary" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+

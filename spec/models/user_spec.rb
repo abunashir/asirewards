@@ -1,6 +1,16 @@
 require "rails_helper"
 
 describe User do
+  describe ".staff" do
+    it "returns non customer users" do
+      _customer = create(:user, role: nil)
+      staff = create(:user, role: "staff")
+      admin = create(:admin)
+
+      expect(User.staff.map(&:id).sort).to eq([staff, admin].map(&:id).sort)
+    end
+  end
+
   describe "#management_admin?" do
     it "returns true when user is admin from the parent company" do
       company = create(:company, owner: true)
@@ -19,7 +29,7 @@ describe User do
     end
   end
 
-  describe "#staff" do
+  describe "#staff?" do
     it "returns true for both admin or staff" do
       admin = create(:user, admin: true)
       user = create(:user, role: "staff")
@@ -30,5 +40,16 @@ describe User do
       expect(customer.staff?).to eq(false)
     end
   end
-end
 
+  describe "#account_type" do
+    it "converts user role to account type" do
+      customer = create(:user, role: nil)
+      admin = create(:admin)
+      staff = create(:user, role: "staff")
+
+      expect(customer.account_type).to eq("Customer")
+      expect(admin.account_type).to eq("Admin")
+      expect(staff.account_type).to eq("Staff")
+    end
+  end
+end
