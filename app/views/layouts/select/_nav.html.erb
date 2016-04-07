@@ -36,12 +36,13 @@
 
       <ul class="nav">
         <% if signed_in? && current_user.staff? %>
-          <li><%= link_to "Certificates", certificates_path %></li>
 
           <% if current_user.management_admin? %>
-            <li><%= link_to "Destinations", destinations_path  %></li>
             <li><%= link_to "Dashboard", admin_certificates_path %></li>
           <% end %>
+
+          <li><%= link_to "Certificates", certificates_path %></li>
+          <li><%= link_to "Destinations", destinations_path  %></li>
 
           <% if current_user.admin? %>
             <li><%= link_to "Orders", orders_path %></li>

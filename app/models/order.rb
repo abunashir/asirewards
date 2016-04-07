@@ -5,10 +5,6 @@ class Order < ActiveRecord::Base
   validates :certificate_id, presence: true
   validates :quantity, presence: true
 
-  def status
-    approved_on.present? ? "Approved" : "Pending"
-  end
-
   def approve
     transaction do
       certificate.create_kit(number: quantity)
@@ -16,7 +12,19 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def status
+    pending? ? "Pending" : "Approved"
+  end
+
+  def pending?
+    !approved_on.present?
+  end
+
   def self.pending
     where(approved_on: nil)
+  end
+
+  def self.recent(limit_to = 20)
+    order(created_at: :desc).limit(limit_to)
   end
 end

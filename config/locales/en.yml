@@ -99,4 +99,12 @@ en:
   user:
     create:
       success: "User information has been updated!"
-      errors: "Please provide valid user name, email and phone number."
+
+  order:
+    create:
+      success: "You order has been submitted for approval!"
+      errors: "Please provide required details before submitting for approval"
+
+    approve:
+      success: "Order has been approved and system is generating the kits!"
+      errors: "Somthing is not right, we will investigate this problem"

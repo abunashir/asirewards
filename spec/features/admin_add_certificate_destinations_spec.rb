@@ -11,7 +11,8 @@ feature "Certificate destinations" do
 
     visit root_path(as: admin)
     click_on "Certificates"
-    click_on "Destinations"
+
+    within("table.certificates") do click_on "Destinations" end
     click_on "Add destinations"
 
     check "Destination 0"

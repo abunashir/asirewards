@@ -11,11 +11,13 @@
             <p>Quantity: <%= @order.quantity %></p>
             <p>Requested by: <%= @order.user.name %></p>
 
-            <%= link_to(
-              "Approve",
-              order_path(@order), method: :put,
-              class: "btn btn-lg btn-primary"
-            ) %>
+            <% if @order.pending? %>
+              <%= link_to(
+                "Approve",
+                admin_order_path(@order), method: :put,
+                class: "btn btn-lg btn-primary"
+              ) %>
+          <% end %>
           </div>
 
         </div>

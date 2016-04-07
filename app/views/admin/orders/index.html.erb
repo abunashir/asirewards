@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="form-container">
-          <h3 class="title">Certificate kit orders</h3>
+          <h3 class="title">Orders</h3>
 
           <%= render "flashes" %>
 
@@ -11,30 +11,22 @@
             <table class="table">
               <tr>
                 <th>Certificate title</th>
+                <th>Ordered by</th>
                 <th>Quantity</th>
-                <th>Note</th>
                 <th>Status</th>
+                <th>Actions</th>
               </tr>
 
               <% @orders.each do |order| %>
                 <tr>
                   <td><%= order.certificate.name %></td>
+                  <td><%= order.user.name %></td>
                   <td><%= order.quantity %></td>
-                  <td><%= order.note %></td>
                   <td><%= order.status %></td>
+                  <td><%= link_to "details", admin_order_path(order) %></td>
                 </tr>
               <% end %>
             </table>
-
-            <br />
-            <% if current_user.admin? %>
-              <%= link_to(
-                "Add new order",
-                new_order_path,
-                class: "btn btn-primary"
-              ) %>
-          <% end %>
-
           </div>
         </div>
       </div>

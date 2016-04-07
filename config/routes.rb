@@ -26,5 +26,6 @@ Rails.application.routes.draw do
     resources :certificates
     resources :users
     resources :destinations
+    resources :orders
   end
 end
