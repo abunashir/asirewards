@@ -1,0 +1,27 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">Add New Destination</h3>
+
+          <%= simple_form_for @destination, url: admin_destinations_path,
+            html: { class: "form-horizontal"} do |f| %>
+            <%= f.input :name, placeholder: "Destination Name *" %>
+            <%= f.input :content, placeholder: "Destination Description" %>
+            <%= f.input :banner, as: :file %>
+            <%= f.input :location, placeholder: "City / Location *" %>
+            <%= f.input :country %>
+
+            <br />
+            <%= f.submit(
+              "Create Destination", class: "btn btn-lg btn-block btn-primary"
+            ) %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+

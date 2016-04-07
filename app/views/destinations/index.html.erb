@@ -36,17 +36,5 @@
         </div>
       <% end %>
     </div>
-
-    <% if signed_in? && current_user.management_admin? %>
-      <div class="row text-center">
-        <div class="list_destinations">
-          <%= link_to(
-            "Add new destination",
-            new_destination_path,
-            class: "btn btn-lg btn-primary"
-          ) %> </div>
-      </div>
-    <% end %>
-
   </div>
 </section>

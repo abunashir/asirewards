@@ -3,6 +3,7 @@ require "rails_helper"
 feature "Destination creation" do
   scenario "management admin create new destination" do
     visit root_path(as: create(:admin, company: create(:company, owner: true)))
+    click_on "Dashboard"
     click_on "Destinations"
     click_on "Add new destination"
 

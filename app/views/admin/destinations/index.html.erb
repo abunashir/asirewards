@@ -1,0 +1,43 @@
+<header id="activation" class="intro-block bg-color1 cover-bg asirewards-hero top60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-container">
+          <h3 class="title">Destinations</h3>
+
+          <%= render "flashes" %>
+
+          <div class="table-responsive">
+            <table class="certificates table">
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+
+              <% @destinations.each do |destination| %>
+                <tr>
+                  <td><%= destination.name %></td>
+                  <td><%= truncate(destination.content, length: 50) %></td>
+                  <td>
+                    <%= link_to(
+                      "edit",
+                      edit_admin_destination_path(destination)
+                    ) %>
+                  </td>
+                </tr>
+              <% end %>
+            </table>
+
+            <br />
+            <%= link_to(
+              "Add new destination",
+              new_admin_destination_path,
+              class: "btn btn-lg btn-primary"
+            ) %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
