@@ -1,4 +1,6 @@
 class ActivationsController < ApplicationController
+  before_action :set_contact_object, only: [:index, :show]
+
   def index
     @activation = Activation.new
     @activation.build_user
@@ -27,6 +29,10 @@ class ActivationsController < ApplicationController
   end
 
   private
+
+  def set_contact_object
+    @contact = Contact.new
+  end
 
   def activation
     @activation = Activation.find_by_code(activation_code)

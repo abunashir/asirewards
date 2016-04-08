@@ -108,3 +108,11 @@ en:
     approve:
       success: "Order has been approved and system is generating the kits!"
       errors: "Somthing is not right, we will investigate this problem"
+
+  contact:
+    create:
+      success: "We've received your request, one of our staff will get in touch
+        soon"
+
+      errors: "Name, Email and Message is mandetory before submitting a contact
+        request"

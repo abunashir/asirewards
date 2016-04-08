@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :contact do
+    name "Keith Thomson"
+    email "keith@asirewards.io"
+    message "This is going to be the details message"
+  end
+
   factory :purchase do
     association :user
     association :certificate

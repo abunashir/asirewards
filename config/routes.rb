@@ -28,4 +28,6 @@ Rails.application.routes.draw do
     resources :destinations
     resources :orders
   end
+
+  resource :contact
 end
