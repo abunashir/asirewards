@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
   layout "application.admin"
 
   def index
-    @orders = Order.recent
+    @orders = Order.recent.includes(:certificate, :user)
   end
 
   def show

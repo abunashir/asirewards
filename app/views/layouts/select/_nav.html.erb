@@ -38,7 +38,7 @@
         <% if signed_in? && current_user.staff? %>
 
           <% if current_user.management_admin? %>
-            <li><%= link_to "Dashboard", admin_certificates_path %></li>
+            <li><%= link_to "Dashboard", admin_orders_path %></li>
           <% end %>
 
           <li><%= link_to "Certificates", certificates_path %></li>
