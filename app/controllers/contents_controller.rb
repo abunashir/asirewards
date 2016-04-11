@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :require_login
+  before_action :require_admin
   skip_before_filter :verify_authenticity_token, only: :create
 
   layout "certificate_content"

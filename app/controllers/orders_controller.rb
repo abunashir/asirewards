@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :require_login
+  before_action :require_staff
 
   def index
     @orders = orders.recent

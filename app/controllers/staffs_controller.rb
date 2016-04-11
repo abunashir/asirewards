@@ -1,5 +1,6 @@
 class StaffsController < ApplicationController
   before_action :require_login
+  before_action :require_admin
 
   def index
     @staffs = staffs.limit(10)

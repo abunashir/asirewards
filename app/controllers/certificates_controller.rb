@@ -1,5 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :require_login
+  before_action :require_staff
+  before_action :require_admin, only: [:new, :create]
 
   def index
     @certificates = certificates
