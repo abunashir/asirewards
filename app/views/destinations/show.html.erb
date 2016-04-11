@@ -14,9 +14,9 @@
   <div class="container">
     <div class="row">
       <div class="certificates">
-        <ul>
+        <ul class="tags">
           <% @destination.certificates.each do |certificate| %>
-            <li> <%= certificate.name %></li>
+            <li><a class="tag" href="#"><%= certificate.name %></a></li>
           <% end %>
         </ul>
       </div>
