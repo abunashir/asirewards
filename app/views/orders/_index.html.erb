@@ -1,0 +1,22 @@
+<table class="table">
+  <tr>
+    <th>Certificate title</th>
+    <th>Quantity</th>
+    <th>Note</th>
+    <th>Status</th>
+  </tr>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.certificate.name %></td>
+      <td><%= order.quantity %></td>
+      <td><%= order.note %></td>
+      <td><%= order.status %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+<% if current_user.admin? %>
+  <%= link_to("Add new order", new_order_path, class: "btn btn-primary") %>
+<% end %>

@@ -1,0 +1,21 @@
+<table class="certificates table">
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Available Kits</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @certificates.each do |certificate| %>
+    <tr>
+      <td><%= certificate.name %></td>
+      <td><%= certificate.status %></td>
+      <td><%= certificate.number_of_available_kits %></td>
+      <td>
+        <%= link_to(
+          "edit", edit_admin_certificate_path(certificate)
+        ) %>
+    </td>
+    </tr>
+  <% end %>
+</table>
