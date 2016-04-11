@@ -8,6 +8,7 @@ feature "Send out certificates" do
     submit_certificate_sending_form(customer)
 
     expect_certificate_kit_page_to_have(customer, certificate)
+    expect(User.find_by_email(customer.email).company).to eq(staff.company)
   end
 
   scenario "staff send out certificate to existing customer" do

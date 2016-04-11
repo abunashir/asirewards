@@ -46,6 +46,7 @@ class KitsController < ApplicationController
       @kit.user = existing_user
     else
       @kit.attributes = kit_params
+      @kit.user.company = current_user.company
     end
   end
 
