@@ -11,6 +11,16 @@ feature "Send out certificates" do
     expect(User.find_by_email(customer.email).company).to eq(staff.company)
   end
 
+  scenario "staff sendout global certificate" do
+    staff, customer, certificate = staff_customer_and_certificate
+    certificate.update! global: true, company: create(:company)
+
+    visit_sending_certificate_page(as: staff)
+    submit_certificate_sending_form(customer)
+
+    expect_certificate_kit_page_to_have(customer, certificate)
+  end
+
   scenario "staff send out certificate to existing customer" do
     staff, customer, certificate = staff_customer_and_certificate
     customer.save

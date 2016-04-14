@@ -4,11 +4,11 @@ class CertificatesController < ApplicationController
   before_action :require_admin, only: [:new, :create]
 
   def index
-    @certificates = certificates
+    @certificates = sellable_certificates
   end
 
   def show
-    @certificate = certificates.friendly.find(params[:id])
+    @certificate = Certificate.friendly.find(params[:id])
     render layout: "certificate"
   end
 
@@ -31,6 +31,10 @@ class CertificatesController < ApplicationController
 
   def certificates
     current_user.company_certificates
+  end
+
+  def sellable_certificates
+    current_user.company_sellable_certificates
   end
 
   def certificate_params
