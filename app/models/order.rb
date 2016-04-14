@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
 
   def approve
     transaction do
-      certificate.create_kit(number: quantity)
+      certificate.create_kit(number: quantity, business: user.company)
       touch :approved_on
     end
   end

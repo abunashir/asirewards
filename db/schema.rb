@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414051647) do
+ActiveRecord::Schema.define(version: 20160414085415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,10 +132,12 @@ ActiveRecord::Schema.define(version: 20160414051647) do
     t.date     "activated_on"
     t.integer  "user_id"
     t.date     "booked_on"
+    t.integer  "company_id"
   end
 
   add_index "kits", ["certificate_id"], name: "index_kits_on_certificate_id", using: :btree
   add_index "kits", ["code"], name: "index_kits_on_code", using: :btree
+  add_index "kits", ["company_id"], name: "index_kits_on_company_id", using: :btree
   add_index "kits", ["user_id"], name: "index_kits_on_user_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
@@ -186,6 +188,7 @@ ActiveRecord::Schema.define(version: 20160414051647) do
   add_foreign_key "certificates", "companies"
   add_foreign_key "contents", "certificates"
   add_foreign_key "kits", "certificates"
+  add_foreign_key "kits", "companies"
   add_foreign_key "kits", "users"
   add_foreign_key "orders", "certificates"
   add_foreign_key "orders", "users"

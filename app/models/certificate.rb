@@ -29,8 +29,9 @@ class Certificate < ActiveRecord::Base
     approved_on.present?
   end
 
-  def create_kit(number:)
-    number.to_i.times { |num|  kits.generate }
+  def create_kit(number:, business: nil)
+    business ||= company
+    number.to_i.times { |num|  kits.generate(business: business) }
   end
 
   def number_of_available_kits
@@ -42,8 +43,9 @@ class Certificate < ActiveRecord::Base
   end
 
   def send_certificate(user:)
-    kit = kits.generate
+    kit = kits.generate(business: company)
     kit.user = user
+
     kit.send_certificate
   end
 

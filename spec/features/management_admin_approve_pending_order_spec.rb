@@ -13,5 +13,6 @@ feature "Order approval" do
     expect(page).to have_content(order.certificate.name)
     expect(page).to have_content("Approved")
     expect(order.certificate.kits.count).to eq(order.quantity)
+    expect(order.certificate.kits.last.company).not_to be_nil
   end
 end

@@ -25,7 +25,7 @@ describe Kit do
   describe ".generate" do
     it "generate a new kit" do
       certificate = create(:certificate)
-      certificate.kits.generate
+      certificate.kits.generate(business: certificate.company)
       kit = certificate.kits.last
 
       expect(kit.code).not_to be_nil

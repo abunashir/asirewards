@@ -1,6 +1,7 @@
 class Kit < ActiveRecord::Base
   belongs_to :certificate
   belongs_to :user
+  belongs_to :company
   accepts_nested_attributes_for :user
 
   delegate :name, :title, :sub_title, :banner, to: :certificate
@@ -63,8 +64,8 @@ class Kit < ActiveRecord::Base
     where(used: false).order('random()').first
   end
 
-  def self.generate
-    create!(code: KitGenerator.new(length: 7).code)
+  def self.generate(business:)
+    create!(code: KitGenerator.new(length: 7).code, company: business)
   end
 
   private
