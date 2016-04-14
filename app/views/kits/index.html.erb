@@ -24,7 +24,9 @@
                   <td>
                     <%= link_to(
                       "Download",
-                      certificate_kit_download_path(kit.certificate, kit, format: :pdf)
+                      certificate_kit_download_path(
+                        kit.certificate, kit, format: :pdf
+                      )
                     ) %>
                 </td>
                 </tr>
@@ -33,7 +35,7 @@
 
             <br />
 
-            <% if @certificate.number_of_available_kits > 0 %>
+            <% if @certificate.number_of_available_kits(current_user.company) > 0 %>
               <%= link_to(
                 "Send certificate",
                 new_certificate_kit_path(@certificate),

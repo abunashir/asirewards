@@ -16,13 +16,11 @@ class Certificate < ActiveRecord::Base
   validates :expires_in, presence: true
   validates :duration, presence: true
 
-  delegate :available_kit, to: :kits
-  delegate :available?, to: :kits
   delegate :banner, :title, :sub_title, to: :content, allow_nil: true
   delegate :terms, :policies, to: :content, allow_nil: true
 
-  def status
-    number_of_available_kits > 0 ? "Active" : "Pending"
+  def status(user_company = nil)
+    number_of_available_kits(user_company) > 0 ? "Active" : "Pending"
   end
 
   def approved?
@@ -34,8 +32,16 @@ class Certificate < ActiveRecord::Base
     number.to_i.times { |num|  kits.generate(business: business) }
   end
 
-  def number_of_available_kits
-    kits.unused.size
+  def number_of_available_kits(user_company = nil)
+    company_scope_kits(user_company).unused.size
+  end
+
+  def available_kit(user_company = nil)
+    company_scope_kits(user_company).available_kit
+  end
+
+  def available?
+    company_scope_kits.available?
   end
 
   def content
@@ -51,5 +57,12 @@ class Certificate < ActiveRecord::Base
 
   def self.global
     where(global: true)
+  end
+
+  private
+
+  def company_scope_kits(user_company)
+    user_company ||= company
+    kits.where(company: user_company)
   end
 end

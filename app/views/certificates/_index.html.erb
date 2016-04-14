@@ -10,7 +10,7 @@
     <tr>
       <td><%= certificate.name %></td>
       <td><%= certificate.status %></td>
-      <td><%= certificate.number_of_available_kits %></td>
+      <td><%= certificate.number_of_available_kits(current_user.company) %></td>
 
       <td>
         <%= link_to(

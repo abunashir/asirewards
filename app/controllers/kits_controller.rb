@@ -3,16 +3,16 @@ class KitsController < ApplicationController
   before_action :require_staff
 
   def index
-    @kits = certificate.kits.used.recent
+    @kits = certificate_kits.used.recent
   end
 
   def new
-    @kit = certificate.kits.new
+    @kit = certificate_kits.new
     @kit.build_user
   end
 
   def create
-    @kit = certificate.available_kit
+    @kit = certificate.available_kit(current_user.company)
     save_certificate_kit || render_errors(:new)
   end
 
@@ -20,6 +20,10 @@ class KitsController < ApplicationController
 
   def certificate
     @certificate ||= Certificate.friendly.find(params[:certificate_id])
+  end
+
+  def certificate_kits
+    certificate.kits.where(company: current_user.company)
   end
 
   def save_certificate_kit

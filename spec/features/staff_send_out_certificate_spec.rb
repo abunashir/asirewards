@@ -55,6 +55,7 @@ feature "Send out certificates" do
 
     click_on "Certificates"
     click_on "Send kit"
+
     click_on "Send certificate"
   end
 

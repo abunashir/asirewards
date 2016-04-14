@@ -35,6 +35,14 @@ RSpec.describe Certificate, type: :model do
 
       expect(certificate.available_kit).to eq(certificate.kits.last)
     end
+
+    it "does not return kits from different company" do
+      certificate = create(:certificate)
+      certificate.create_kit(number: 2, business: create(:company))
+      certificate.kits.first.update! used: true
+
+      expect(certificate.available_kit).to be_nil
+    end
   end
 
   describe "#number_of_available_kits" do
