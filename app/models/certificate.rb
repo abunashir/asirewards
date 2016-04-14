@@ -46,4 +46,8 @@ class Certificate < ActiveRecord::Base
     kit.user = user
     kit.send_certificate
   end
+
+  def self.global
+    where(global: true)
+  end
 end

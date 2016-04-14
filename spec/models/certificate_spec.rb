@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Certificate, type: :model do
+  describe ".global" do
+    it "returns the global certs only" do
+      _certificate = create(:certificate)
+      global_cert = create(:certificate, global: true)
+
+      expect(Certificate.global.last).to eq(global_cert)
+    end
+  end
+
   describe "#status" do
     it "returns pending for the default certificate" do
       certificate = create(:certificate)

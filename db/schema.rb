@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408064806) do
+ActiveRecord::Schema.define(version: 20160414051647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20160408064806) do
 
   create_table "certificates", force: :cascade do |t|
     t.decimal  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.date     "approved_on"
     t.string   "code_prefix"
     t.integer  "company_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160408064806) do
     t.integer  "expires_in"
     t.integer  "duration"
     t.string   "slug"
+    t.boolean  "global",      default: false
   end
 
   add_index "certificates", ["company_id"], name: "index_certificates_on_company_id", using: :btree
