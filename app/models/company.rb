@@ -9,4 +9,8 @@ class Company < ActiveRecord::Base
   def staffs
     users.where(role: "staff")
   end
+
+  def sellable_certificates
+    Certificate.global | certificates
+  end
 end
