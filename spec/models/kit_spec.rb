@@ -1,18 +1,6 @@
 require 'rails_helper'
 
 describe Kit do
-  describe ".available?" do
-    it "returns true where there is some unsued kit" do
-      create(:kit)
-      expect(Kit.available?).to eq(true)
-    end
-
-    it "returns false when there is no unused kit" do
-      create(:kit, used: true)
-      expect(Kit.available?).to eq(false)
-    end
-  end
-
   describe ".available_kit" do
     it "returns the last available kit" do
       _kit_one = create(:kit, used: true)

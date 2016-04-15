@@ -56,10 +56,6 @@ class Kit < ActiveRecord::Base
     used.where(booked_on: nil).where.not(activated_on: nil)
   end
 
-  def self.available?
-    available_kit.present?
-  end
-
   def self.available_kit
     where(used: false).order('random()').first
   end

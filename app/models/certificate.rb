@@ -40,10 +40,6 @@ class Certificate < ActiveRecord::Base
     company_scope_kits(user_company).available_kit
   end
 
-  def available?
-    company_scope_kits.available?
-  end
-
   def content
     contents.last
   end
