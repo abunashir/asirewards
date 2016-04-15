@@ -19,6 +19,7 @@ feature "Certificate editing" do
     fill_in "certificate_price", with: cert_attr.price
     fill_in "certificate_expires_in", with: 10
     fill_in "certificate_duration", with: 5
+    check "Global"
     click_on "Update"
 
     expect(page).to have_content(cert_attr.name)

@@ -5,7 +5,7 @@ class Admin::CertificatesController < ApplicationController
   layout "application.admin"
 
   def index
-    @certificates = Certificate.all
+    @certificates = Certificate.includes(:company)
   end
 
   def edit
@@ -34,7 +34,7 @@ class Admin::CertificatesController < ApplicationController
   def certificate_params
     params.require(:certificate).permit(
       :name, :code_prefix, :price, :expires_in,
-      :duration, contents_attributes: [:id, :banner]
+      :duration, :global, contents_attributes: [:id, :banner]
     )
   end
 end

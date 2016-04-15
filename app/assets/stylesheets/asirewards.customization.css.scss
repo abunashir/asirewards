@@ -97,15 +97,15 @@
     span.checkbox{
       float: left;
       width: 33%;
-
-      input.check_boxes{
-        margin-right: 5px;
-        -webkit-appearance: checkbox;
-        -moz-appearance:    checkbox;
-        appearance:         checkbox;
-      }
     }
   }
+}
+
+.form-group .checkbox input{
+  margin-right: 5px;
+  -webkit-appearance: checkbox;
+  -moz-appearance:    checkbox;
+  appearance:         checkbox;
 }
 
 section#featured{
