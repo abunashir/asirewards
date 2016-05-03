@@ -1,3 +1,3 @@
 //= require ContentTools/content-tools
-//= require cloudinary-image-uploader
+//= require ContentTools/cloudinary-image-uploader
 //= require editor.init
