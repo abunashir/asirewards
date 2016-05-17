@@ -25,4 +25,14 @@ feature "Certificate editing" do
     expect(page).to have_content(cert_attr.name)
     expect(page).to have_content(content.certificate.status)
   end
+
+  scenario "management admin open certificate in edit mode" do
+    content = create(:content, certificate: create(:certificate))
+    visit root_path(as: create(:admin, company: create(:owner_company)))
+    visit admin_certificates_path
+    click_on "content"
+
+    expect(current_path).to eq certificate_content_path(content.certificate)
+    expect(page).to have_content("Submit for approval")
+  end
 end

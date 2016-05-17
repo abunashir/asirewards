@@ -15,6 +15,10 @@
         <%= link_to(
           "edit", edit_admin_certificate_path(certificate)
         ) %>
+
+      <%= link_to(
+        "content", certificate_content_path(certificate), target: "_blank"
+      ) %>
     </td>
     </tr>
   <% end %>
