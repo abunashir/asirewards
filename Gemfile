@@ -46,7 +46,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.4.0"
+  gem "rspec-rails", "~> 3.4.2"
   gem "wkhtmltopdf-binary"
 end
 
