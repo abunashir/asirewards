@@ -68,4 +68,18 @@ RSpec.describe Certificate, type: :model do
       expect(user.kits.last.status).to eq("Pending")
     end
   end
+
+  describe "#publishable?" do
+    it "returns true if there is valid content" do
+      certificate = create(:certificate)
+      create(:content, certificate: certificate)
+
+      expect(certificate.publishable?).to eq(true)
+    end
+
+    it "returns false where there is not existing content" do
+      certificate = create(:certificate)
+      expect(certificate.publishable?).to eq(false)
+    end
+  end
 end

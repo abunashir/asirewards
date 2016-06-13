@@ -54,8 +54,9 @@ en:
       errors: "Please fix the errors before updating the certificate."
 
     content:
-      create:
-        ready: "Your certificate has been submitted for approval"
+      ready: "Your certificate has been submitted for approval"
+      missing:
+        "Please use the visual tool (blue pencil on the top left side of the screen) to edit and save your certificate content before submitting for approval."
 
       title:
         "<h2>Time to edit your certificate, your header goes here!</h2>"

@@ -1,3 +1,5 @@
+<%= render "flashes" %>
+
 <div
   id="certificate_wrapper"
   class="certificate_pdf certificate_wrapper"
@@ -41,7 +43,7 @@
   <p>
   <%= link_to(
     "Submit for approval",
-    certificate_content_path(@certificate, ready: true)
+    certificate_content_path(@certificate), method: :patch
   ) %>
 </p>
 </div>

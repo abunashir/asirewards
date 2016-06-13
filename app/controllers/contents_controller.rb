@@ -6,28 +6,16 @@ class ContentsController < ApplicationController
   layout "certificate_content"
 
   def show
-    if ready_to_be_live?
-      redirect_to(
-        certificates_path,
-        notice: I18n.t("certificate.content.create.ready")
-      )
-
-    else
-      @content = certificate.content || certificate.contents.new
-    end
+    build_content
   end
 
   def create
-    @content = certificate.contents.last || certificate.contents.new
-    @content.attributes = certificate_params
+    build_content
+    save_content || render_json_error
+  end
 
-    respond_to do |format|
-      if @content.save
-        format.json { render json: @content.id, status: :ok }
-      else
-        format.json { render json: {}, status: :unprocessable_entity }
-      end
-    end
+  def update
+    update_content || render_errors
   end
 
   private
@@ -36,10 +24,34 @@ class ContentsController < ApplicationController
     @certificate = Certificate.friendly.find(params[:certificate_id])
   end
 
-  def ready_to_be_live?
-    if certificate.title && certificate.sub_title
-      params[:ready] && params[:ready] == "true"
+  def build_content
+    @content ||= certificate.content || certificate.contents.new
+  end
+
+  def save_content
+    @content.attributes = certificate_params
+
+    if @content.save
+      render json: @content.id, status: :ok
     end
+  end
+
+  def update_content
+    if certificate.publishable?
+      redirect_to(
+        certificates_path,
+        notice: I18n.t("certificate.content.ready")
+      )
+    end
+  end
+
+  def render_errors
+    flash[:error] = I18n.t("certificate.content.missing")
+    redirect_to certificate_content_path(@certificate)
+  end
+
+  def render_json_error
+    render json: {}, status: :unprocessable_entity
   end
 
   def certificate_params

@@ -44,6 +44,10 @@ class Certificate < ActiveRecord::Base
     contents.last
   end
 
+  def publishable?
+    !required_content_field_missing?
+  end
+
   def send_certificate(user:)
     kit = kits.generate(business: company)
     kit.user = user
@@ -60,5 +64,9 @@ class Certificate < ActiveRecord::Base
   def company_scope_kits(user_company)
     user_company ||= company
     kits.where(company: user_company)
+  end
+
+  def required_content_field_missing?
+    content.nil? || title.nil? || sub_title.nil?
   end
 end
