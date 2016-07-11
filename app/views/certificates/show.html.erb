@@ -5,16 +5,16 @@
 
   <div class="titles">
     <div class="header">
-      <%= raw(@certificate.title) %>
+      <%= @certificate.title.html_safe %>
     </div>
 
     <div class="sub_header">
-      <%= raw(@certificate.sub_title) %>
+      <%= @certificate.sub_title.html_safe %>
     </div>
   </div>
 
   <div class="terms">
-    <%= raw(@certificate.terms) %>
+    <%= @certificate.terms.html_safe %>
   </div>
 
   <div class="code">
@@ -28,7 +28,7 @@
   </div>
 
   <div class="policies">
-    <%= raw(@certificate.policies) %>
+    <%= @certificate.policies.html_safe %>
   </div>
 </div>
 
