@@ -15,15 +15,13 @@
 <section id="price-3col" class="bg-color3 text-center">
   <div class="container">
     <h2 class="title">Choose your certificate</h2>
-    <p class="sep-bottom editContent">
-    Our partners offer great holiday escapes. Select your certificate and choose from our destinations. Stays start at $ 21.28 USD per person per night!
-    </p>
-
     <div class="row">
       <div class="col-sm-4">
         <div class="pricing-table">
           <h4 class="bg-color1 dark-bg">ASI Americas</h4>
-          <span class="dark-bg cover-bg pricing_bg">$30</span>
+          <span class="dark-bg cover-bg pricing_bg">
+            <%= certificate_retail_price("asi-americas") %>
+          </span>
 
           <ul class="benefits-list">
             <li><strong>Destinations</strong> in</li>
@@ -51,7 +49,9 @@
           </div>
 
           <h4 class="bg-color1 dark-bg">ASI Charity</h4>
-          <span class="dark-bg cover-bg pricing_bg">$55</span>
+          <span class="dark-bg cover-bg pricing_bg">
+            <%= certificate_retail_price("asi-charity") %>
+          </span>
 
           <ul class="benefits-list">
             <li><strong>Destinations</strong> in</li>
@@ -74,7 +74,9 @@
       <div class="col-sm-4">
         <div class="pricing-table">
           <h4 class="bg-color1 dark-bg">ASI Worldwide</h4>
-          <span class="dark-bg cover-bg pricing_bg">$45</span>
+          <span class="dark-bg cover-bg pricing_bg">
+            <%= certificate_retail_price("asi-worldwide") %>
+          </span>
 
           <ul class="benefits-list">
             <li><strong>Destination</strong> In</li>
