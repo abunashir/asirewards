@@ -5,17 +5,21 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new account_params
-
-    if @account.save
-      sign_in(@account.admin)
-      redirect_to marketer_path, notice: I18n.t("account.create.success")
-    else
-      render :new
-    end
+    create_account || render(:new)
   end
 
   private
+
+  def account
+    @account ||= Account.new(account_params)
+  end
+
+  def create_account
+    if account.save
+      sign_in(account.admin)
+      redirect_to(marketer_path, notice: I18n.t("account.create.success"))
+    end
+  end
 
   def account_params
     params.require(:account).permit(
