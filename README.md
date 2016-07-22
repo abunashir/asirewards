@@ -56,6 +56,15 @@ your contribution.
 
         % open http://localhost:3000
 
+## Deployment
+
+Once you are added to the Heroku then you can deploy your changes to the staging
+application
+
+```sh
+bin/deploy
+```
+
 ## Contributing
 
 First, thank you for contributing! We love pull requests from everyone. By

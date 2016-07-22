@@ -16,6 +16,8 @@ bin/rake dev:prime
 # Add binstubs to PATH via export PATH=".git/safe/../../bin:$PATH" in ~/.zshenv
 mkdir -p .git/safe
 
-# Only if this isn't CI
-# if [ -z "$CI" ]; then
-# fi
+# Set up deploys
+if [ -z "$CI" ]; then
+  git remote add staging https://git.heroku.com/asirewards-staging.git
+  heroku join --app asirewards-staging
+fi
